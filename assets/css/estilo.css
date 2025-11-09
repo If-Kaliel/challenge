@@ -90,6 +90,32 @@ main {
  margin:1rem 0;
 }
 
+.membro{
+background:var(--bg);
+border:2px solid var(--accent);
+border-radius:10px;
+text-align:center;
+padding:1rem;
+transition:.2s;
+}
+.membro:hover{
+transform:translateY(-4px);
+box-shadow:0 3px 8px rgba(0,0,0,.2);
+}
+
+.membro img{
+width:100px;
+height:100px;
+object-fit:contain;
+margin-bottom:6px;
+}
+
+.time{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:1rem;
+}
+
 .sidebar{
 width:300px;
 background:rgba(244,140,36,.05);
