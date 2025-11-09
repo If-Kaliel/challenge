@@ -146,6 +146,34 @@ margin-bottom:10px;
  border-radius:8px;
 }
 
+.form-row{
+ display:flex;
+ flex-direction:column;
+ gap:.4rem;
+ margin-bottom:.8rem;
+}
+input,textarea{
+ border:1px solid rgba(0,0,0,.2);
+ border-radius:8px;
+ padding:.6rem;
+}
+button.primary{
+ background:var(--highlight);
+ color:#fff;
+ border:none;
+ padding:.6rem 1rem;
+ border-radius:8px;
+ font-weight:bold;
+ cursor:pointer;
+}
+button.primary:hover{
+ background:#d97410;
+}
+.error{
+ color:#b00020;
+ font-size:.9rem;
+}
+
 
 @media (max-width:600px){
 .hamburger{display:block}
