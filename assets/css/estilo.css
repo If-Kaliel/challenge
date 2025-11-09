@@ -16,28 +16,34 @@
   gap: 1rem;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+html {
+font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: "Segoe UI", Arial, sans-serif;
-  line-height: 1.6;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
+background-color: var(--bg);
+color: var(--text);
+line-height: 1.6;
+display: flex;
+justify-content: center;
+padding: 1rem;
+}
+
+.container {
+width: 100%;
+max-width: var(--max-width);
+background: var(--white);
+border-radius: var(--radius);
+box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+overflow: hidden;
 }
 
 header {
   background-color: var(--text);
   color: var(--white);
   padding: 1rem;
-  text-align: center;
-  border-radius: 0 0 12px 12px;
+  align-items: center;
+  justify-content: space-between 
 }
 
 nav a {
