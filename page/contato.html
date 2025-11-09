@@ -4,13 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contato</title>
+  <title>Sobre</title>
   <link rel="stylesheet" href="../assets/css/estilo.css">
-  <script src="../assets/js/script.js"></script>
 </head>
 
 <body>
-   <header>
+  <header>
     <button class="hamburger" aria-label="Abrir menu">=</button>
     <nav role="navegação" aria-label="Menu principal">
       <a href="../index.html">Início</a>
@@ -20,29 +19,57 @@
     </nav>
   </header>
 
-<div class="container">
-  <main>
-      <section class="section">
-        <h2>Contato</h2>
-          <nav>
+   <div class="container">
+      <main>
+       <section class="section">
+            <h2>Fale Conosco</h2>
+            <p>Entre em contato com o time do Simple Manager para suporte técnico, dúvidas comerciais ou solicitação de demonstração.</p>
+            <!-- Conteúdo da aula como base
+            <fieldset>
+              <legend>LOGIN</legend>
+              <div>
+                <label for="">Email</label>
+                <input type="email" name="email">
+              </div>
+              <div>
+                <label for="">Senha</label>
+                <input type="password" name="senha">
+              </div>
+              <div>
+                <button type="submit">Login</button>
+              </div>
+            </fieldset> 
+          </form>-->
+          <form id="contact-form" aria-label="Formulário de contato">
+            <div class="form-row">
+              <label for="name">Nome</label>
+              <input id="name" name="name" type="text" placeholder="Seu nome" />
+            </div>
+            <div class="form-row">
+              <label for="email">E-mail</label>
+              <input id="email" name="email" type="email" placeholder="seu@exemplo.com" />
+            </div>
+            <div class="form-row">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" rows="4" placeholder="Descreva sua solicitação..."></textarea>
+            </div>
+            <button type="submit" class="primary">Enviar mensagem</button>
+          </form>
+          <nav class="contact-list" aria-label="Redes sociais">
             <ul>
-              <li><a href="https://www.facebook.com" target="_blank" style="color:#202532;;">Facebook</a></li>
-              <li><a href="https://google.com" target="_blank" style="color: #202532; ;">Google</a></li>
-              <li><a href="https://www.twitter.com" target="_blank" style="color: #202532;;">Twitter</a></li>
-              <li><a href="https://www.instagram.com" target="_blank" style="color: #202532;;">Instagram</a></li>
-              <li><a href="https://www.linkedin.com" target="_blank" style="color: #202532;;">LinkedIn</a></li>
-              <li><a href="https://www.youtube.com" target="_blank" style="color: #202532;;">YouTube</a></li>
+              <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+              <li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
             </ul>
           </nav>
-
-         </nav>
-        </section>
-      </main>
-</div>
+       </section>
+     </main>
+    </div>
     
     <footer>
-    <p>&copy;Todos os direitos reservados - 2025. Simple</p>
+    <p>&copy;Todos os direitos reservados - 2025. Simple Manager</p>
     </footer>
-
+    
+ <script src="../assets/js/main.js"></script>
 </body>
 </html>
