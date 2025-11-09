@@ -16,6 +16,8 @@ border-radius: 12px;
 gap: 1rem;
 }
 
+/* Meu Deus... eu não faço ideia de como vou me orientar depois.*/
+
 html {
 font-family: "Segoe UI", Arial, sans-serif;
 }
@@ -38,7 +40,6 @@ html, body {
   margin: 80px auto; 
   padding: 1.5rem;
   min-height: calc(100vh - 160px); 
-  max-height: calc(100vh - 160px);
   border: 3px solid rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
@@ -223,6 +224,10 @@ color:var(--highlight);
 }
 a:hover{text-decoration:underline}
 
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
 
 .contact-list {
   margin-top: 2rem;
@@ -344,6 +349,35 @@ color: var(--text);
 list-style-type: disc;
 margin-left: 1.5rem;
 text-align: left;
+}
+
+.erro {
+  color: #b00020;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+#contact-status {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+button.primary:hover,
+button.primary:focus {
+  background: #cf6f14;
+}
+
+nav[role="navegação"] a:focus {
+  background: rgba(255,255,255,0.15);
+}
+
+
+@media (max-width: 600px) {
+  nav[role="navegação"] a {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
