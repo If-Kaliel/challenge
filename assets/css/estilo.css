@@ -48,7 +48,7 @@ justify-content: space-between;
 
 nav[role="navegação"] {
 display: flex;
-gap: 0.75rem;
+gap: 10px;
 }
 
 nav[role="navegação"] a {
@@ -81,36 +81,15 @@ main {
 }
 
 
-li {
-  color: var(--text);
-}
-
-ol, ul {
-  margin-left: 2rem;
-}
-
-.team {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
 .member {
   background-color: var(--bg);
   border: 2px solid var(--accent);
   border-radius: 10px;
   text-align: center;
-  padding: 1rem;
-  width: 220px;
-  transition: transform 0.2s, box-shadow 0.2s;
+ 
 }
 
-.member:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+
 
 .member img {
   width: 100px;
@@ -137,10 +116,18 @@ footer {
   border-radius: 12px 12px 0 0;
 }
 
-/* Escrevendo isso para não esquecer da gambiarra com o footer p*/
+@media (max-width:600px){
+.hamburger{display:block}
+nav[role="navegação"]{display:none}
+main{flex-direction:column}
+.sidebar{width:100%}
+.team{grid-template-columns:1fr}
+}
 
-footer p {
+@media (min-width:600px) and (max-width:991px){
+.team{grid-template-columns:repeat(2,1fr)}
+}
 
-  color: #ffffff;
-
+@media (min-width:992px){
+ .team{grid-template-columns:repeat(3,1fr)}
 }
