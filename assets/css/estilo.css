@@ -29,13 +29,13 @@ justify-content: center;
 padding: 1rem;
 }
 
-.container {
-width: 100%;
-max-width: 1200px;
-background: #ffffff
-border-radius: 12px;
-box-shadow: 0 5px 10px rgba(0,0,0,.15);
-overflow: hidden;
+.container{
+ max-width:1200px;
+ background:#fff;
+ border-radius:12px;
+ box-shadow:0 5px 10px rgba(0,0,0,.15);
+ overflow:hidden;
+ width:100%;
 }
 
 header {
@@ -133,9 +133,18 @@ color:var(--highlight);
 margin-bottom:10px;
 }
 
-
-
-
+.features{
+ display:flex;
+ gap:1rem;
+ flex-wrap:wrap;
+}
+.feature{
+ flex:1;
+ min-width:180px;
+ background:var(--bg);
+ padding:1rem;
+ border-radius:8px;
+}
 
 
 @media (max-width:600px){
