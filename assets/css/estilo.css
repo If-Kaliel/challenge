@@ -11,7 +11,9 @@
   --highlight: #f48c24;
   --muted: #60636d;
   --white: #ffffff;
-  
+  max-width: 1200px;
+  border-radius: 12px;
+  gap: 1rem;
 }
 
 * {
