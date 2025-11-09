@@ -4,59 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Simple Manager</title>
     <link rel="stylesheet" href="./assets/css/estilo.css">
-    <script src="../assets/js/script.js"></script>
 </head>
 
 <body>
-    <header>
-      <nav role="navegação" aria-label="Menu principal">
-          <a href="./page/integrantes.html">Integrantes</a> 
-          <a href="./page/about.html">Sobre</a> 
-          <a href="./page/faq.html">FAQ</a> 
-          <a href="./page/contato.html">Contato</a>
-      </nav>
-    </header>
+  <header>
+    <button class="hamburger" aria-label="Abrir menu">=</button>
+    <nav role="navegação" aria-label="Menu principal">
+      <a href="./page/integrantes.html">Equipe</a>
+      <a href="./page/about.html">Sobre</a>
+      <a href="./page/faq.html">FAQ</a>
+      <a href="./page/contato.html">Contato</a>
+    </nav>
+  </header>
+
 <div class="container">
   <main>
         <section class="hero">
           <div class="left">
-            <h1>Bem vindos ao Simple</h1>
-            <p class="lead">Software de gestão para todas as suas necessidades</p>
+            <h1>Bem vindos ao Simple Manager</h1>
+            <p class="lead">O Simple Manager é um sistema de gestão de equipes desenvolvido para otimizar o trabalho de departamentos de Recursos Humanos,
+          integrando informações, produtividade e comunicação em um único ambiente.</p>
         
            <div>
             <img src="./assets/img/tdb1.jpg" alt="Fotinha">
+           <div class="section">
+          <h2 class="strong">Soluções Integradas</h2>
+          <p>
+            Gerencie suas equipes, cadastre colaboradores, acompanhe desempenho, organize escalas e visualize relatórios em tempo real.
+          </p>
+        </div>
+      </section>
 
-           </div> 
-           
-            <div class="section">
-              <h2 class="strong">Objetivo</h2>
-              <p>Acomodar o sistema de gerenciamento da TdB</p>
-            </div>
-          </div>
-          <aside class="sidebar">
-            <h3 class="strong">Resumo de entrega</h3>
-            <ul style="color:var(--muted)">
-              <li>Páginas obrigatórias implementadas</li>
-              <li>Menu com links entre páginas</li>
-              <li>Layout pensado para desktops</li>
-            </ul>
-          </aside>
-        </section>
+      <aside class="sidebar">
+        <h3 class="strong">Principais Recursos</h3>
+        <ul style="color:var(--muted)">
+          <li>Controle de presença e produtividade</li>
+          <li>Gestão de cargos e departamentos</li>
+          <li>Emissão de relatórios e gráficos</li>
+        </ul>
+      </aside>
+    </main>
 
-        <section class="section">
-          <h2 class="strong">Recursos Visuais</h2>
-          <div class="features">
-            <div class="feature"><strong>Paleta de cores</strong><div class="muted">Tons da tdb</div></div>
-            <div class="feature"><strong>Tipografia</strong><div class="muted">Neutra</div></div>
-            <div class="feature"><strong>Imagens</strong><div class="muted">Imagens dos integrantes e tdb</div></div>
-          </div>
-        </section>
-      </main>
-</div>
-     <footer>
-      <p>&copy;Todos os direitos reservados - 2025. Simple</p>
-    </footer>
-    </body>
+    <section class="section">
+      <h2 class="strong">Por que escolher o Simple Manager?</h2>
+      <div class="features">
+        <div class="feature">
+          <strong>Eficiência</strong>
+          <div class="muted">Automatize tarefas repetitivas e ganhe tempo no RH.</div>
+        </div>
+        <div class="feature">
+          <strong>Transparência</strong>
+          <div class="muted">Visualize indicadores de desempenho com clareza.</div>
+        </div>
+        <div class="feature">
+          <strong>Conectividade</strong>
+          <div class="muted">Equipe sempre sincronizada e bem informada.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Simple Manager — Todos os direitos reservados</p>
+  </footer>
+  <script src="./assets/js/script.js"></script>
+</body>
 </html>
