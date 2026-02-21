@@ -5,15 +5,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FAQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../assets/css/estilo.css">
 </head>
 
 <body>
   <header>
-    <button class="hamburger" aria-label="Abrir menu">=</button>
-    <nav role="navegação" aria-label="Menu principal">
+    <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Menu principal">
       <a href="../index.html">Início</a>
       <a href="./integrantes.html">Equipe</a>
+      <a href="./about.html">Sobre</a>
       <a href="./faq.html">FAQ</a>
       <a href="./contato.html">Contato</a>
     </nav>
@@ -21,34 +24,42 @@
 
   <div class="container">
     <main>
-      <section class="hero">
-        <div class="left">
-          <h1>Perguntas Frequentes</h1>
+      <section class="section">
+        <h2>Perguntas Frequentes</h2>
 
-          <h3>1. O Simple Manager é gratuito?</h3>
-          <p>Oferecemos um plano básico gratuito com recursos limitados. Planos premium incluem relatórios avançados e
-            dashboards personalizados.</p>
+        <details class="faq-item">
+          <summary>1. O Simple Manager é gratuito?</summary>
+          <p>Oferecemos um plano básico gratuito com recursos limitados. Planos premium incluem relatórios avançados e dashboards personalizados.</p>
+        </details>
 
-          <h3>2. Preciso instalar algo?</h3>
+        <details class="faq-item">
+          <summary>2. Preciso instalar algo?</summary>
           <p>Não. O Simple Manager é 100% online e pode ser acessado de qualquer dispositivo conectado à internet.</p>
+        </details>
 
-          <h3>3. É possível exportar relatórios?</h3>
+        <details class="faq-item">
+          <summary>3. É possível exportar relatórios?</summary>
           <p>Sim, o sistema permite exportar relatórios em PDF e CSV, conforme o nível de acesso do usuário.</p>
+        </details>
 
-          <h3>4. O sistema é seguro?</h3>
+        <details class="faq-item">
+          <summary>4. O sistema é seguro?</summary>
           <p>Sim, todas as informações são criptografadas e armazenadas com segurança em nossos servidores.</p>
-        </div>
+        </details>
 
-        <div class="right">
-          <img src="../assets/img/FAQ.jpg" alt="Equipe Simple Manager">
-        </div>
+        <details class="faq-item">
+          <summary>5. Posso usar em dispositivos móveis?</summary>
+          <p>Sim, o Simple Manager é totalmente responsivo e funciona em smartphones, tablets e desktops.</p>
+        </details>
       </section>
     </main>
+  </div>
 
-    <footer>
-      <p>&copy;Todos os direitos reservados - 2026. Simple Manager</p>
-    </footer>
-    <script src="../assets/js/script.js"></script>
+  <footer>
+    <p>&copy;Todos os direitos reservados - 2026. Simple Manager</p>
+  </footer>
+
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

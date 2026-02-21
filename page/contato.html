@@ -5,15 +5,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Contato</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../assets/css/estilo.css">
 </head>
 
 <body>
   <header>
-    <button class="hamburger" aria-label="Abrir menu">=</button>
-    <nav role="navegação" aria-label="Menu principal">
+    <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Menu principal">
       <a href="../index.html">Início</a>
       <a href="./integrantes.html">Equipe</a>
+      <a href="./about.html">Sobre</a>
       <a href="./faq.html">FAQ</a>
       <a href="./contato.html">Contato</a>
     </nav>
@@ -27,30 +30,30 @@
           demonstração.</p>
 
         <form id="contact-form" aria-label="Formulário de contato">
-          <div class="form-row">
+          <div class="form-group">
             <label for="name">Nome</label>
             <input id="name" name="name" type="text" placeholder="Seu nome" />
           </div>
-          <div class="form-row">
+          <div class="form-group">
             <label for="email">E-mail</label>
             <input id="email" name="email" type="email" placeholder="seu@exemplo.com" />
           </div>
-          <div class="form-row">
+          <div class="form-group">
             <label for="message">Mensagem</label>
             <textarea id="message" name="message" rows="4" placeholder="Descreva sua solicitação..."></textarea>
           </div>
-          <button type="submit" class="primary">Enviar mensagem</button>
+          <button type="submit">Enviar mensagem</button>
           <div id="contact-status" aria-live="polite"></div>
         </form>
 
-        <nav class="contact-list" aria-label="Redes sociais">
-          <ul>
+        <div class="contact-list">
+          <h3>Redes Sociais</h3>
+          <ul aria-label="Redes sociais">
             <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
             <li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
             <li><a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a></li>
           </ul>
-
-        </nav>
+        </div>
       </section>
     </main>
   </div>
