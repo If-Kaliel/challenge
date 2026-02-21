@@ -205,10 +205,6 @@ button.primary:hover {
   background: #d97410;
 }
 
-.error {
-  color: #b00020;
-  font-size: .9rem;
-}
 
 footer {
   position: fixed;
