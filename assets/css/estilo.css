@@ -321,6 +321,11 @@ main:has(.sidebar) {
   width: 100%;
 }
 
+@media (max-width: 768px) {
+  .time {
+    flex-wrap: wrap;
+  }
+}
 .membro {
   background: var(--surface);
   border-radius: 18px;
