@@ -43,7 +43,22 @@ if (hamburger && nav) {
 
 // ===== MARCA LINK ATIVO =====
 document.querySelectorAll('nav a').forEach(link => {
-  if (link.href === window.location.href) {
+  const linkPathname = new URL(link.href, window.location.origin).pathname;
+  const currentPathname = window.location.pathname;
+
+  const normalizePath = (path) => {
+    // Remove "index.html" do final, se existir
+    if (path.endsWith('index.html')) {
+      path = path.slice(0, -'index.html'.length);
+    }
+    // Remove barra final, exceto na raiz "/"
+    if (path.length > 1 && path.endsWith('/')) {
+      path = path.slice(0, -1);
+    }
+    return path;
+  };
+
+  if (normalizePath(linkPathname) === normalizePath(currentPathname)) {
     link.classList.add('active');
     link.setAttribute('aria-current', 'page');
   }
