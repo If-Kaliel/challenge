@@ -221,11 +221,14 @@ nav a.active {
 /* ===== MAIN LAYOUT ===== */
 main {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr;
   gap: 24px;
   margin-bottom: 32px;
 }
 
+main:has(.sidebar) {
+  grid-template-columns: 1fr 300px;
+}
 /* ===== SIDEBAR ===== */
 .sidebar {
   background: var(--surface);
