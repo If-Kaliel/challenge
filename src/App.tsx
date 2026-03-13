@@ -6,6 +6,7 @@ import { Equipe } from './pages/Equipe';
 import { Sobre } from './pages/Sobre';
 import { FAQ } from './pages/FAQ';
 import { Contato } from './pages/Contato';
+import { Solucao } from './pages/Solucao';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="sobre" element={<Sobre />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="contato" element={<Contato />} />
+          <Route path="solucao" element={<Solucao />} />
         </Route>
       </Routes>
     </BrowserRouter>

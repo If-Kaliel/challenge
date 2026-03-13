@@ -27,6 +27,7 @@ export function Header() {
         <NavLink to="/sobre" onClick={closeMenu}>Sobre</NavLink>
         <NavLink to="/faq" onClick={closeMenu}>FAQ</NavLink>
         <NavLink to="/contato" onClick={closeMenu}>Contato</NavLink>
+        <NavLink to="/solucao" onClick={closeMenu}>Solução</NavLink>
       </nav>
     </header>
   );
