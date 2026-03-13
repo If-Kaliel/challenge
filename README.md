@@ -15,5 +15,3 @@
 **Link para o repositório no git:**
 
 https://github.com/If-Kaliel/challenge.git
-
-Simple Manager
