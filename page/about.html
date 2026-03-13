@@ -4,49 +4,126 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sobre</title>
+  <title>Sobre — Simple Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../assets/css/estilo.css">
+  <script src="../assets/js/script.js" defer></script>
 </head>
 
 <body>
   <header>
-    <button class="hamburger" aria-label="Abrir menu">=</button>
-    <nav role="navegação" aria-label="Menu principal">
+    <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav role="navigation" aria-label="Menu principal">
       <a href="../index.html">Início</a>
       <a href="./integrantes.html">Equipe</a>
+      <a href="./about.html">Sobre</a>
       <a href="./faq.html">FAQ</a>
       <a href="./contato.html">Contato</a>
     </nav>
   </header>
 
-   <div class="container">
-   <main>
-  <section class="section about-section">
-    <div class="about-image">
-      <img src="../assets/img/Produtividade.jpg" alt="Interface do Simple Manager">
+  <div class="container">
+    <div role="main" class="about-main">
+
+      <!-- Hero da página Sobre -->
+      <div class="about-hero">
+        <div class="about-hero-content">
+          <span class="about-badge">Sobre nós</span>
+          <h1>Gestão de equipes <br><span class="highlight">simples e eficiente</span></h1>
+          <p>O Simple Manager nasceu da necessidade de centralizar e simplificar os processos de RH, colocando gestores e colaboradores em sintonia com poucos cliques.</p>
+        </div>
+        <div class="about-hero-image">
+          <img src="../assets/img/Produtividade.jpg" alt="Interface do Simple Manager">
+        </div>
+      </div>
+
+      <!-- Estatísticas -->
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">+500</span>
+          <span class="stat-label">Empresas atendidas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">98%</span>
+          <span class="stat-label">Satisfação dos clientes</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">24/7</span>
+          <span class="stat-label">Suporte disponível</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Online e seguro</span>
+        </div>
+      </div>
+
+      <!-- Missão e valores -->
+      <div class="section about-mission">
+        <div class="mission-text">
+          <h2>Nossa Missão</h2>
+          <p>Transformar a gestão de pessoas em uma experiência intuitiva, acessível e estratégica para empresas de todos os tamanhos.</p>
+          <p>Acreditamos que boas ferramentas liberam o potencial das equipes — por isso desenvolvemos o Simple Manager com foco em usabilidade, segurança e resultados reais.</p>
+        </div>
+        <div class="mission-values">
+          <div class="value-item">
+            <span class="value-icon">🎯</span>
+            <div>
+              <strong>Foco em resultados</strong>
+              <p>Cada funcionalidade foi pensada para gerar impacto direto na produtividade.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🔒</span>
+            <div>
+              <strong>Segurança em primeiro lugar</strong>
+              <p>Dados criptografados e armazenados com os mais altos padrões de proteção.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">⚡</span>
+            <div>
+              <strong>Simplicidade e agilidade</strong>
+              <p>Interface intuitiva para que qualquer pessoa possa usar sem treinamento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Funções principais -->
+      <div class="section">
+        <h2>Funções Principais</h2>
+        <div class="about-functions">
+          <div class="function-card">
+            <div class="function-icon">👥</div>
+            <strong>Gestão de Colaboradores</strong>
+            <p>Cadastro completo, histórico de cargos e controle de dados de cada membro da equipe.</p>
+          </div>
+          <div class="function-card">
+            <div class="function-icon">📊</div>
+            <strong>Controle de Produtividade</strong>
+            <p>Acompanhe indicadores de desempenho e gere relatórios personalizados em tempo real.</p>
+          </div>
+          <div class="function-card">
+            <div class="function-icon">🗓️</div>
+            <strong>Gestão de Férias e Licenças</strong>
+            <p>Controle de afastamentos, solicitações e calendário integrado por departamento.</p>
+          </div>
+          <div class="function-card">
+            <div class="function-icon">📈</div>
+            <strong>Relatórios e Insights</strong>
+            <p>Visualizações gráficas e exportação em PDF e CSV para tomada de decisão estratégica.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="about-content">
-      <h1>Sobre o Simple Manager</h1>
-      <p>O Simple Manager é um sistema desenvolvido para facilitar o gerenciamento de equipes e processos de RH. Ele permite que gestores acompanhem desempenho, controle de horários, feedbacks e metas de forma centralizada e segura.</p>
-
-      <h2>Funções Principais</h2>
-      <ul>
-        <li>Cadastro e gerenciamento de colaboradores</li>
-        <li>Controle de produtividade</li>
-        <li>Gestão de férias e licenças</li>
-        <li>Geração de relatórios e insights</li>
-      </ul>
-    </div>
-  </section>
-</main>
-
   </div>
 
-    <footer>
-    <p>&copy;Todos os direitos reservados - 2025. Simple Manager</p>
-    </footer>
+  <footer>
+    <p>&copy;Todos os direitos reservados - 2026. Simple Manager</p>
+  </footer>
 
-    <script src="../assets/js/script.js"></script>
 </body>
+
 </html>
