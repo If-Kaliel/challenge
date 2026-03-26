@@ -1004,56 +1004,32 @@ main.about-main {
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
+/* ===== RESPONSIVO — 1024px (Tablet) ===== */
+@media (max-width: 1024px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main:has(.sidebar) {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    top: auto;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .about-hero {
-    flex-direction: column;
-    padding: 36px 24px;
-    gap: 28px;
+    gap: 32px;
   }
 
   .about-hero-image {
-    width: 100%;
+    width: 280px;
   }
-
-  .about-hero-content h1 {
-    font-size: 1.7rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .about-mission {
-    flex-direction: column;
-    gap: 24px;
-  }
-
-  .about-functions {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 425px) {
-  .about-hero-content h1 {
-    font-size: 1.4rem;
-  }
-
-  .about-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-/* ===== FOOTER ===== */
-footer {
-  background: linear-gradient(90deg, var(--dark) 0%, #1e1b4b 100%);
-  color: rgba(255, 255, 255, 0.45);
-  text-align: center;
-  padding: 24px 32px;
-  font-size: 0.85rem;
-  margin-top: auto;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  letter-spacing: 0.02em;
 }
 
 /* ===== RESPONSIVO — 768px ===== */
@@ -1097,6 +1073,15 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .container {
+    padding: 0 16px;
+    margin: 24px auto;
+  }
+
+  .section {
+    padding: 22px 18px;
+  }
+
   .features {
     grid-template-columns: 1fr;
   }
@@ -1109,22 +1094,64 @@ footer {
     font-size: 1.6rem;
   }
 
-  .container {
-    padding: 0 16px;
-    margin: 24px auto;
-  }
-
   .membro {
     width: 100%;
     max-width: 100%;
   }
 
-  .section {
-    padding: 22px 18px;
-  }
-
   .time {
     gap: 16px;
+  }
+
+  /* Sobre */
+  .about-hero {
+    flex-direction: column;
+    padding: 36px 24px;
+    gap: 28px;
+  }
+
+  .about-hero-image {
+    width: 100%;
+  }
+
+  .about-hero-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .about-mission {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .about-functions {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 40px 24px 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    padding: 18px 0 24px;
+  }
+
+  /* Contato */
+  .contact-list ul {
+    flex-direction: column;
+  }
+
+  .contact-list ul li a {
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -1188,36 +1215,39 @@ footer {
     padding: 18px 14px;
   }
 
-  button[type="submit"],
   .btn {
     font-size: 0.95rem;
     padding: 12px 20px;
   }
 
-  .contact-list ul {
-    flex-direction: column;
+  /* Sobre — 425px */
+  .about-hero-content h1 {
+    font-size: 1.4rem;
   }
 
-  .contact-list ul li a {
-    width: 100%;
-    justify-content: center;
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  footer {
-    padding: 18px 14px;
-    font-size: 0.8rem;
+  /* Footer — 425px */
+  .footer {
+    padding: 32px 16px 0;
+  }
+
+  .footer-bottom {
+    font-size: 0.75rem;
   }
 }
 
-/* ===== RESPONSIVO — 375px ===== */
+/* ===== RESPONSIVO — 375px (iPhone SE, etc.) ===== */
 @media (max-width: 375px) {
   header::before {
     font-size: 1.05rem;
   }
 
   nav a {
-    font-size: 0.9rem;
-    padding: 11px 14px;
+    font-size: 0.88rem;
+    padding: 11px 12px;
   }
 
   .hero h1 {
@@ -1228,14 +1258,15 @@ footer {
     padding: 24px 12px;
   }
 
-  .section h2 {
+  .section h2,
+  .section h1 {
     font-size: 1.1rem;
     padding-left: 10px;
   }
 
   .faq-item summary {
     font-size: 0.88rem;
-    padding: 14px 14px;
+    padding: 14px;
   }
 
   .form-group input,
@@ -1243,9 +1274,14 @@ footer {
     padding: 11px 12px;
     font-size: 0.9rem;
   }
+
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
 }
 
-/* ===== RESPONSIVO — 320px ===== */
+/* ===== RESPONSIVO — 320px (Telas muito pequenas) ===== */
 @media (max-width: 320px) {
   header {
     padding: 8px 10px;
@@ -1289,7 +1325,8 @@ footer {
     padding: 14px 10px;
   }
 
-  .section h2 {
+  .section h2,
+  .section h1 {
     font-size: 1rem;
     padding-left: 8px;
   }
@@ -1307,23 +1344,19 @@ footer {
     height: 80px;
   }
 
-  .about-content h1 {
-    font-size: 1.2rem;
+  .about-stats {
+    grid-template-columns: 1fr;
   }
 
   .footer {
-    padding: 32px 20px 20px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    gap: 28px;
-    align-items: flex-start;
+    padding: 28px 12px 0;
   }
 
   .footer-bottom {
     flex-direction: column;
     gap: 6px;
     text-align: center;
+    padding: 14px 0 20px;
+    font-size: 0.72rem;
   }
 }
