@@ -1,4 +1,5 @@
 import produtividadeImg from '../assets/img/Produtividade.jpg';
+import { Card } from '../components/Card';
 
 export function Sobre() {
   return (
@@ -19,22 +20,22 @@ export function Sobre() {
 
         {/* Estatísticas */}
         <div className="about-stats">
-          <div className="stat-card">
+          <Card variant="stat">
             <span className="stat-number">+500</span>
             <span className="stat-label">Empresas atendidas</span>
-          </div>
-          <div className="stat-card">
+          </Card>
+          <Card variant="stat">
             <span className="stat-number">98%</span>
             <span className="stat-label">Satisfação dos clientes</span>
-          </div>
-          <div className="stat-card">
+          </Card>
+          <Card variant="stat">
             <span className="stat-number">24/7</span>
             <span className="stat-label">Suporte disponível</span>
-          </div>
-          <div className="stat-card">
+          </Card>
+          <Card variant="stat">
             <span className="stat-number">100%</span>
             <span className="stat-label">Online e seguro</span>
-          </div>
+          </Card>
         </div>
 
         {/* Missão e valores */}
@@ -73,26 +74,26 @@ export function Sobre() {
         <div className="section">
           <h2>Funções Principais</h2>
           <div className="about-functions">
-            <div className="function-card">
+            <Card variant="function">
               <div className="function-icon">👥</div>
               <strong>Gestão de Colaboradores</strong>
               <p>Cadastro completo, histórico de cargos e controle de dados de cada membro da equipe.</p>
-            </div>
-            <div className="function-card">
+            </Card>
+            <Card variant="function">
               <div className="function-icon">📊</div>
               <strong>Controle de Produtividade</strong>
               <p>Acompanhe indicadores de desempenho e gere relatórios personalizados em tempo real.</p>
-            </div>
-            <div className="function-card">
+            </Card>
+            <Card variant="function">
               <div className="function-icon">🗓️</div>
               <strong>Gestão de Férias e Licenças</strong>
               <p>Controle de afastamentos, solicitações e calendário integrado por departamento.</p>
-            </div>
-            <div className="function-card">
+            </Card>
+            <Card variant="function">
               <div className="function-icon">📈</div>
               <strong>Relatórios e Insights</strong>
               <p>Visualizações gráficas e exportação em PDF e CSV para tomada de decisão estratégica.</p>
-            </div>
+            </Card>
           </div>
         </div>
 

@@ -1,4 +1,5 @@
 import tdb1 from '../assets/img/tdb1.jpg';
+import { Card } from '../components/Card';
 
 export function Home() {
   return (
@@ -31,18 +32,18 @@ export function Home() {
       <section className="section">
         <h2 className="strong">Por que escolher o Simple Manager?</h2>
         <div className="features">
-          <div className="feature">
+          <Card variant="feature">
             <strong>Eficiência</strong>
             <div className="muted">Automatize tarefas repetitivas e ganhe tempo no RH.</div>
-          </div>
-          <div className="feature">
+          </Card>
+          <Card variant="feature">
             <strong>Transparência</strong>
             <div className="muted">Visualize indicadores de desempenho com clareza.</div>
-          </div>
-          <div className="feature">
+          </Card>
+          <Card variant="feature">
             <strong>Conectividade</strong>
             <div className="muted">Equipe sempre sincronizada e bem informada.</div>
-          </div>
+          </Card>
         </div>
       </section>
     </div>

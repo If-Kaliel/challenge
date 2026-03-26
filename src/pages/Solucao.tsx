@@ -1,3 +1,5 @@
+import { Card } from '../components/Card';
+
 export function Solucao() {
   return (
     <div className="container">
@@ -9,26 +11,26 @@ export function Solucao() {
           </p>
 
           <div className="features">
-            <div className="feature">
+            <Card variant="feature">
               <strong>Arquitetura Moderna</strong>
               <div className="muted">
                 Construído em formato Single Page Application (SPA) para garantir uma navegação fluida e sem interrupções por recarregamento.
               </div>
-            </div>
-            
-            <div className="feature">
+            </Card>
+
+            <Card variant="feature">
               <strong>Integração Eficiente</strong>
               <div className="muted">
                 Componentização total dos elementos-chave da aplicação, proporcionando reaproveitamento de código e manutenção facilitada.
               </div>
-            </div>
+            </Card>
 
-            <div className="feature">
+            <Card variant="feature">
               <strong>Interface Intuitiva</strong>
               <div className="muted">
                 Design System focado e planejado para a melhor experiência dos colaboradores no dia a dia, desde acessos de entrada até gerenciamento de dados críticos.
               </div>
-            </div>
+            </Card>
           </div>
 
           <div style={{ marginTop: '48px' }}>
@@ -45,3 +47,4 @@ export function Solucao() {
     </div>
   );
 }
+
