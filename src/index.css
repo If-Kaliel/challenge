@@ -521,31 +521,74 @@ form {
 }
 
 /* ===== BOTÕES ===== */
-button[type="submit"],
 .btn {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent2) 100%);
-  color: #fff;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 14px 32px;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  width: 100%;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, background 0.2s;
   letter-spacing: 0.02em;
+  border: 2px solid transparent;
+  text-decoration: none;
 }
 
-button[type="submit"]:hover,
-.btn:hover {
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Variante primária (padrão) */
+.btn--primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent2) 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.btn--primary:hover:not(:disabled) {
   transform: translateY(-3px);
   box-shadow: 0 8px 28px rgba(79, 70, 229, 0.35);
 }
 
-button[type="submit"]:active,
-.btn:active {
+.btn--primary:active:not(:disabled) {
   transform: translateY(0);
+}
+
+/* Variante outline */
+.btn--outline {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn--outline:hover:not(:disabled) {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.25);
+}
+
+/* Variante ghost */
+.btn--ghost {
+  background: transparent;
+  color: var(--primary);
+  border-color: transparent;
+}
+
+.btn--ghost:hover:not(:disabled) {
+  background: rgba(79, 70, 229, 0.08);
+}
+
+/* Largura total */
+.btn--full {
+  width: 100%;
 }
 
 /* ===== MENSAGENS DE FEEDBACK ===== */

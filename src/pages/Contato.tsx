@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { Button } from '../components/Button';
 
 export function Contato() {
   const [nome, setNome] = useState('');
@@ -103,7 +104,7 @@ export function Contato() {
               {errors.mensagem && <div className="erro">{errors.mensagem}</div>}
             </div>
             
-            <button type="submit">Enviar mensagem</button>
+            <Button type="submit" fullWidth>Enviar mensagem</Button>
             
             {status.type && (
               <div id="contact-status" aria-live="polite" className={status.type === 'success' ? 'success' : 'erro'}>
