@@ -1,8 +1,9 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonVariant } from '../types';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant?: 'primary' | 'outline' | 'ghost';
+  variant?: ButtonVariant;
   fullWidth?: boolean;
 }
 
@@ -28,3 +29,4 @@ export function Button({
     </button>
   );
 }
+

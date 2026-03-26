@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
-import { Button } from '../components/Button';
+import type { FormStatus } from '../types';
+import { Button } from '../components';
 
 export function Contato() {
   const [nome, setNome] = useState('');
@@ -8,7 +9,7 @@ export function Contato() {
   const [mensagem, setMensagem] = useState('');
   
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, text: string }>({ type: null, text: '' });
+  const [status, setStatus] = useState<FormStatus>({ type: null, text: '' });
 
   const handleSubmit = (ev: FormEvent<HTMLFormElement>) => {
     ev.preventDefault();

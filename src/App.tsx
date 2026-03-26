@@ -1,12 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import { Home } from './pages/Home';
-// Import other pages once implemented
-import { Equipe } from './pages/Equipe';
-import { Sobre } from './pages/Sobre';
-import { FAQ } from './pages/FAQ';
-import { Contato } from './pages/Contato';
-import { Solucao } from './pages/Solucao';
+import { Layout } from './components';
+import { Home, Equipe, Sobre, FAQ, Contato, Solucao } from './pages';
 
 function App() {
   return (
@@ -26,3 +20,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react';
+import type { CardVariant } from '../types';
 
 interface CardProps {
   children: ReactNode;
-  variant?: 'default' | 'feature' | 'stat' | 'function';
+  variant?: CardVariant;
   className?: string;
 }
 
 export function Card({ children, variant = 'default', className = '' }: CardProps) {
-  const variantClass: Record<string, string> = {
+  const variantClass: Record<CardVariant, string> = {
     default: 'card',
     feature: 'card card--feature feature',
     stat: 'card card--stat stat-card',
@@ -18,3 +19,4 @@ export function Card({ children, variant = 'default', className = '' }: CardProp
 
   return <div className={classes}>{children}</div>;
 }
+

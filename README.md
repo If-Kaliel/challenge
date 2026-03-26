@@ -1,73 +1,119 @@
-# React + TypeScript + Vite
+# Simple Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Sistema de gestão de equipes desenvolvido para otimizar departamentos de Recursos Humanos, integrando informações, produtividade e comunicação em um único ambiente.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 👥 Equipe
 
-## React Compiler
+| Nome | RM | Turma |
+|---|---|---|
+| Kaliel Conceição de Aquino | 567587 | 1TDSPB |
+| Matheus Carneiro Maciel | 567753 | 1TDSPB |
+| Guilherme Anitelli | 566744 | 1TDSPB |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Tecnologias
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Tecnologia | Versão | Uso |
+|---|---|---|
+| React | 19 | Framework UI |
+| TypeScript | 5.9 | Tipagem estática |
+| Vite | 8 | Bundler e dev server |
+| React Router DOM | 7 | Roteamento SPA |
+| CSS Vanilla | — | Estilização com Design System |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📁 Estrutura do Projeto
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── assets/
+│   └── img/                  # Imagens do projeto
+├── components/
+│   ├── Button.tsx             # Componente de botão reutilizável
+│   ├── Card.tsx               # Componente de card reutilizável
+│   ├── Footer.tsx             # Rodapé global
+│   ├── Header.tsx             # Cabeçalho com navegação
+│   ├── Layout.tsx             # Layout compartilhado (Header + Outlet + Footer)
+│   └── index.ts               # Barrel exports
+├── pages/
+│   ├── Home.tsx               # Página inicial
+│   ├── Equipe.tsx             # Integrantes do projeto
+│   ├── Sobre.tsx              # Sobre o sistema
+│   ├── FAQ.tsx                # Perguntas frequentes
+│   ├── Contato.tsx            # Formulário de contato
+│   ├── Solucao.tsx            # Solução do projeto
+│   └── index.ts               # Barrel exports
+├── types/
+│   └── index.ts               # Tipos compartilhados
+├── App.tsx                    # Configuração de rotas
+├── main.tsx                   # Entry point
+└── index.css                  # Design System global
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🗺️ Rotas
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Rota | Página |
+|---|---|
+| `/` | Home |
+| `/equipe` | Equipe |
+| `/sobre` | Sobre |
+| `/faq` | FAQ |
+| `/contato` | Contato |
+| `/solucao` | Solução do Projeto |
+
+---
+
+## ▶️ Como rodar o projeto
+
+### Pré-requisitos
+- Node.js 18+
+- npm ou yarn
+
+### Instalação e execução
+
+```bash
+# Clone o repositório
+git clone https://github.com/If-Kaliel/challenge.git
+cd challenge
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
+npm run dev
 ```
+
+O projeto estará disponível em `http://localhost:5173`.
+
+### Scripts disponíveis
+
+```bash
+npm run dev      # Servidor de desenvolvimento com HMR
+npm run build    # Build de produção
+npm run preview  # Preview do build de produção
+npm run lint     # Verificação de linting
+```
+
+---
+
+## 🏗️ Arquitetura
+
+O projeto é uma **SPA (Single Page Application)** construída com React + Vite, seguindo os seguintes princípios:
+
+- **Componentização**: componentes reutilizáveis com props tipadas em TypeScript
+- **Design System**: variáveis CSS centralizadas em `:root` para consistência visual
+- **Responsividade**: breakpoints para 1024px, 768px, 425px, 375px e 320px
+- **Acessibilidade**: uso de `aria-label`, `role`, `htmlFor` e hierarquia semântica de headings
+- **Roteamento**: navegação client-side sem recarregamento via React Router DOM
+
+---
+
+## 📄 Licença
+
+Projeto acadêmico — FIAP 2026. Todos os direitos reservados.
