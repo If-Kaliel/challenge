@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
 import type { FormStatus } from '../types';
@@ -11,6 +12,7 @@ interface ContatoFormData {
 }
 
 export function Contato() {
+  const navigate = useNavigate();
   const [status, setStatus] = useState<FormStatus>({ type: null, text: '' });
 
   const {
@@ -25,8 +27,10 @@ export function Contato() {
     registros.push({ ...data, data: new Date().toLocaleString() });
     localStorage.setItem('mensagens', JSON.stringify(registros));
 
-    setStatus({ type: 'success', text: '✓ Mensagem enviada com sucesso!' });
+    setStatus({ type: 'success', text: '✓ Mensagem enviada! Redirecionando...' });
     reset();
+    // useNavigate: redireciona para home após 2 segundos
+    setTimeout(() => navigate('/'), 2000);
   };
 
   const inputBase =

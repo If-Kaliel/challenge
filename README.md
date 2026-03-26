@@ -2,66 +2,81 @@
 
 > Sistema de gestão de equipes desenvolvido para otimizar departamentos de Recursos Humanos, integrando informações, produtividade e comunicação em um único ambiente.
 
+🔗 **Repositório GitHub:** [https://github.com/If-Kaliel/challenge](https://github.com/If-Kaliel/challenge)
+
 ---
 
-## 👥 Equipe
+## 📋 Descrição do Projeto
 
-| Nome | RM | Turma |
+O **Simple Manager** é uma aplicação web desenvolvida como projeto acadêmico na FIAP, com o objetivo de centralizar e simplificar os processos de gestão de pessoas em empresas de todos os tamanhos.
+
+A plataforma permite:
+- Cadastro e visualização de colaboradores
+- Controle de produtividade e desempenho
+- Gestão de férias e licenças
+- Geração de relatórios e insights estratégicos
+- Comunicação integrada entre gestores e equipes
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+| Tecnologia | Versão | Finalidade |
 |---|---|---|
-| Kaliel Conceição de Aquino | 567587 | 1TDSPB |
-| Matheus Carneiro Maciel | 567753 | 1TDSPB |
-| Guilherme Anitelli | 566744 | 1TDSPB |
+| **React** | 19.x | Interface e componentização |
+| **Vite** | 8.x | Build e performance |
+| **TypeScript** | 5.9.x | Tipagem obrigatória no código |
+| **TailwindCSS** | 3.x | Estilização de toda a interface |
+| **React Router DOM** | 7.x | Navegação entre páginas (SPA) |
+| **React Hook Form** | 7.x | Validação de formulários |
+| **GitHub** | — | Versionamento obrigatório |
 
 ---
 
-## 🚀 Tecnologias
-
-| Tecnologia | Versão | Uso |
-|---|---|---|
-| React | 19 | Framework UI |
-| TypeScript | 5.9 | Tipagem estática |
-| Vite | 8 | Bundler e dev server |
-| React Router DOM | 7 | Roteamento SPA |
-| CSS Vanilla | — | Estilização com Design System |
-
----
-
-## 📁 Estrutura do Projeto
+## 📁 Estrutura de Pastas
 
 ```
-src/
-├── assets/
-│   └── img/                  # Imagens do projeto
-├── components/
-│   ├── Button.tsx             # Componente de botão reutilizável
-│   ├── Card.tsx               # Componente de card reutilizável
-│   ├── Footer.tsx             # Rodapé global
-│   ├── Header.tsx             # Cabeçalho com navegação
-│   ├── Layout.tsx             # Layout compartilhado (Header + Outlet + Footer)
-│   └── index.ts               # Barrel exports
-├── pages/
-│   ├── Home.tsx               # Página inicial
-│   ├── Equipe.tsx             # Integrantes do projeto
-│   ├── Sobre.tsx              # Sobre o sistema
-│   ├── FAQ.tsx                # Perguntas frequentes
-│   ├── Contato.tsx            # Formulário de contato
-│   ├── Solucao.tsx            # Solução do projeto
-│   └── index.ts               # Barrel exports
-├── types/
-│   └── index.ts               # Tipos compartilhados
-├── App.tsx                    # Configuração de rotas
-├── main.tsx                   # Entry point
-└── index.css                  # Design System global
+challenge/
+├── public/                        # Arquivos estáticos públicos
+├── src/
+│   ├── assets/
+│   │   └── img/                   # Imagens do projeto
+│   ├── components/
+│   │   ├── Button.tsx             # Botão reutilizável (variantes: primary, outline, ghost)
+│   │   ├── Card.tsx               # Card reutilizável (variantes: feature, stat, function)
+│   │   ├── Footer.tsx             # Rodapé global
+│   │   ├── Header.tsx             # Cabeçalho com navegação responsiva
+│   │   ├── Layout.tsx             # Layout compartilhado (Header + Outlet + Footer)
+│   │   └── index.ts               # Barrel exports dos componentes
+│   ├── pages/
+│   │   ├── Home.tsx               # Página inicial
+│   │   ├── Equipe.tsx             # Integrantes do projeto
+│   │   ├── Sobre.tsx              # Sobre o sistema
+│   │   ├── FAQ.tsx                # Perguntas frequentes
+│   │   ├── Contato.tsx            # Formulário de contato (React Hook Form)
+│   │   ├── Solucao.tsx            # Solução do projeto
+│   │   └── index.ts               # Barrel exports das páginas
+│   ├── types/
+│   │   └── index.ts               # Tipos TypeScript compartilhados
+│   ├── App.tsx                    # Configuração de rotas (React Router)
+│   ├── main.tsx                   # Entry point da aplicação
+│   └── index.css                  # Design System global + Tailwind CSS
+├── index.html                     # HTML base
+├── tailwind.config.js             # Configuração do TailwindCSS
+├── postcss.config.js              # Configuração do PostCSS
+├── vite.config.ts                 # Configuração do Vite
+├── tsconfig.json                  # Configuração do TypeScript
+└── package.json                   # Dependências e scripts
 ```
 
 ---
 
-## 🗺️ Rotas
+## 🗺️ Rotas da Aplicação
 
 | Rota | Página |
 |---|---|
 | `/` | Home |
-| `/equipe` | Equipe |
+| `/equipe` | Integrantes |
 | `/sobre` | Sobre |
 | `/faq` | FAQ |
 | `/contato` | Contato |
@@ -69,51 +84,60 @@ src/
 
 ---
 
-## ▶️ Como rodar o projeto
+## ▶️ Como Executar Localmente
 
 ### Pré-requisitos
-- Node.js 18+
-- npm ou yarn
+- [Node.js](https://nodejs.org/) versão 18 ou superior
+- npm (já incluído com o Node.js)
 
-### Instalação e execução
+### Passos
 
 ```bash
-# Clone o repositório
+# 1. Clone o repositório
 git clone https://github.com/If-Kaliel/challenge.git
+
+# 2. Entre na pasta do projeto
 cd challenge
 
-# Instale as dependências
+# 3. Instale as dependências
 npm install
 
-# Inicie o servidor de desenvolvimento
+# 4. Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-O projeto estará disponível em `http://localhost:5173`.
+Acesse em: **http://localhost:5173**
 
 ### Scripts disponíveis
 
-```bash
-npm run dev      # Servidor de desenvolvimento com HMR
-npm run build    # Build de produção
-npm run preview  # Preview do build de produção
-npm run lint     # Verificação de linting
-```
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento com HMR |
+| `npm run build` | Build de produção |
+| `npm run preview` | Preview do build de produção |
+| `npm run lint` | Verificação de linting |
 
 ---
 
-## 🏗️ Arquitetura
+## 👥 Integrantes do Grupo
 
-O projeto é uma **SPA (Single Page Application)** construída com React + Vite, seguindo os seguintes princípios:
+| Nome | RM | Turma | GitHub |
+|---|---|---|---|
+| Kaliel Conceição de Aquino | 567587 | 1TDSPB | [@If-Kaliel](https://github.com/If-Kaliel) |
+| Matheus Carneiro Maciel | 567753 | 1TDSPB | [@kakarneiro](https://github.com/kakarneiro) |
+| Guilherme Anitelli | 566744 | 1TDSPB | [@GuilhermeAnitelli](https://github.com/GuilhermeAnitelli) |
 
-- **Componentização**: componentes reutilizáveis com props tipadas em TypeScript
-- **Design System**: variáveis CSS centralizadas em `:root` para consistência visual
-- **Responsividade**: breakpoints para 1024px, 768px, 425px, 375px e 320px
-- **Acessibilidade**: uso de `aria-label`, `role`, `htmlFor` e hierarquia semântica de headings
-- **Roteamento**: navegação client-side sem recarregamento via React Router DOM
+---
+
+## 🔗 Links Importantes
+
+- **Repositório:** [https://github.com/If-Kaliel/challenge](https://github.com/If-Kaliel/challenge)
+- **Instituição:** FIAP — Faculdade de Informática e Administração Paulista
+- **Curso:** Análise e Desenvolvimento de Sistemas
+- **Ano:** 2026
 
 ---
 
 ## 📄 Licença
 
-Projeto acadêmico — FIAP 2026. Todos os direitos reservados.
+Projeto acadêmico — FIAP 2026. Todos os direitos reservados à equipe Simple Manager.
