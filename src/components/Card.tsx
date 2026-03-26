@@ -7,16 +7,18 @@ interface CardProps {
   className?: string;
 }
 
+const variantClasses: Record<CardVariant, string> = {
+  default:
+    'bg-surface rounded-lg border border-border shadow-sm p-6',
+  feature:
+    'relative overflow-hidden bg-feature-gradient rounded-lg border border-border p-7 text-center transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-md before:content-[\'\'] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary before:to-accent',
+  stat:
+    'bg-surface rounded-lg border border-border border-t-4 border-t-primary shadow-sm p-6 text-center transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-md',
+  function:
+    'relative overflow-hidden bg-feature-gradient rounded-lg border border-border p-7 transition-transform duration-200 hover:-translate-y-1.5 hover:shadow-md before:content-[\'\'] before:absolute before:inset-x-0 before:top-0 before:h-1 before:bg-gradient-to-r before:from-primary before:to-accent',
+};
+
 export function Card({ children, variant = 'default', className = '' }: CardProps) {
-  const variantClass: Record<CardVariant, string> = {
-    default: 'card',
-    feature: 'card card--feature feature',
-    stat: 'card card--stat stat-card',
-    function: 'card card--function function-card',
-  };
-
-  const classes = [variantClass[variant], className].filter(Boolean).join(' ');
-
+  const classes = [variantClasses[variant], className].filter(Boolean).join(' ');
   return <div className={classes}>{children}</div>;
 }
-
