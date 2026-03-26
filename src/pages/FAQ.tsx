@@ -23,7 +23,8 @@ export function FAQ() {
         <div className="flex flex-col gap-3.5 mt-2">
           {faqs.map(({ q, a }, i) => (
             <div
-              key={i}
+              key={q}
+
               className={`rounded-lg border overflow-hidden transition-all duration-200 ${
                 openIndex === i
                   ? 'border-primary shadow-md'

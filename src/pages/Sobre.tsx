@@ -1,8 +1,8 @@
 import produtividadeImg from '../assets/img/Produtividade.jpg';
 import { Card } from '../components';
 
-
 export function Sobre() {
+
   return (
     <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
 
