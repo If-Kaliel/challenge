@@ -7,7 +7,7 @@ export function Equipe() {
     <div className="container">
       <main>
         <section className="section">
-          <h2>Criadores do Projeto</h2>
+          <h1>Criadores do Projeto</h1>
           <div className="time">
             <div className="membro">
               <img src={kalielImg} alt="Integrante 1" />

@@ -868,6 +868,95 @@ main.about-main {
 }
 
 
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(90deg, var(--dark) 0%, #1e1b4b 100%);
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: auto;
+  padding: 56px 40px 0;
+}
+
+.footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  gap: 48px;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-brand {
+  flex: 1.2;
+}
+
+.footer-logo {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+
+.footer-desc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-nav,
+.footer-contact {
+  flex: 1;
+}
+
+.footer-nav-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.footer-nav ul,
+.footer-contact ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-nav a,
+.footer-contact a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover,
+.footer-contact a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 20px 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.footer-credits {
+  font-size: 0.78rem;
+}
+
 /* ===== CONTATO - REDES SOCIAIS ===== */
 .contact-list {
   margin-top: 28px;
@@ -1222,8 +1311,19 @@ footer {
     font-size: 1.2rem;
   }
 
-  footer {
-    font-size: 0.75rem;
-    padding: 14px 10px;
+  .footer {
+    padding: 32px 20px 20px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 28px;
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
   }
 }
