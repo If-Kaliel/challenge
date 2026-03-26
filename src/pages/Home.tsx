@@ -1,5 +1,6 @@
 import tdb1 from '../assets/img/tdb1.jpg';
-import { Card } from '../components/Card';
+import { Card } from '../components';
+
 
 export function Home() {
   return (
