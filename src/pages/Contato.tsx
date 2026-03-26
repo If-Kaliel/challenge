@@ -33,7 +33,7 @@ export function Contato() {
     'w-full px-4 py-3 border-2 border-border rounded-md text-[0.95rem] font-sans text-brand-text bg-[#fafbff] transition-all duration-200 focus:outline-none focus:border-primary focus:shadow-[0_0_0_4px_rgba(79,70,229,0.12)] hover:border-[#c7d2fe]';
 
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-12 px-7">
+    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
       <section className="bg-surface rounded-lg p-9 mb-6 shadow-sm border border-border">
         <h2 className="text-[1.5rem] font-bold text-brand-text mb-2 border-l-4 border-primary pl-3.5">
           Fale Conosco

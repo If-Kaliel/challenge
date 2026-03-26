@@ -3,10 +3,10 @@ import { Card } from '../components/Card';
 
 export function Home() {
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-12 px-7">
+    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-hero-gradient text-white rounded-[20px] px-12 py-16 mb-8 text-center shadow-lg">
+      <section className="relative overflow-hidden bg-hero-gradient text-white rounded-[20px] px-6 py-12 md:px-12 md:py-16 mb-8 text-center shadow-lg">
         {/* Radial gradient overlay */}
         <div className="pointer-events-none absolute inset-0"
           style={{ background: 'radial-gradient(circle at 20% 50%, rgba(139,92,246,0.25) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.2) 0%, transparent 50%)' }}

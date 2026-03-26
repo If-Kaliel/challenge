@@ -3,10 +3,10 @@ import { Card } from '../components/Card';
 
 export function Sobre() {
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-12 px-7">
+    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
 
       {/* Hero */}
-      <div className="relative overflow-hidden flex items-center gap-12 bg-hero-gradient rounded-[20px] px-12 py-14 mb-7 text-white">
+      <div className="relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-hero-gradient rounded-[20px] px-6 py-10 md:px-12 md:py-14 mb-7 text-white">
         <div className="pointer-events-none absolute inset-0"
           style={{ background: 'radial-gradient(circle at 10% 50%, rgba(139,92,246,0.3) 0%, transparent 50%), radial-gradient(circle at 90% 20%, rgba(6,182,212,0.2) 0%, transparent 50%)' }}
         />
@@ -24,7 +24,7 @@ export function Sobre() {
             O Simple Manager nasceu da necessidade de centralizar e simplificar os processos de RH, colocando gestores e colaboradores em sintonia com poucos cliques.
           </p>
         </div>
-        <div className="shrink-0 w-[340px] relative z-10">
+        <div className="shrink-0 w-full md:w-[340px] relative z-10">
           <img src={produtividadeImg} alt="Interface do Simple Manager"
             className="w-full rounded-2xl object-cover shadow-[0_20px_60px_rgba(0,0,0,0.45)] border border-white/10 transition-transform duration-300 hover:scale-[1.02]"
           />

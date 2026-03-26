@@ -38,7 +38,7 @@ const membros = [
 export function Equipe() {
   return (
     <div className="max-w-[1140px] w-full mx-auto my-12 px-7">
-      <section className="bg-surface rounded-lg p-9 mb-6 shadow-sm border border-border">
+      <section className="bg-surface rounded-lg p-6 md:p-9 mb-6 shadow-sm border border-border">
         <h1 className="text-[1.5rem] font-bold text-brand-text mb-5 border-l-4 border-primary pl-3.5">
           Criadores do Projeto
         </h1>
@@ -47,7 +47,7 @@ export function Equipe() {
           {membros.map((m) => (
             <div
               key={m.nome}
-              className="relative overflow-hidden bg-surface rounded-[18px] px-8 py-9 text-center w-[280px] shadow-md border border-border transition-transform duration-300 hover:-translate-y-2.5 hover:shadow-lg
+              className="relative overflow-hidden bg-surface rounded-[18px] px-6 py-8 md:px-8 md:py-9 text-center w-full md:w-[280px] shadow-md border border-border transition-transform duration-300 hover:-translate-y-2.5 hover:shadow-lg
                 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-[5px] before:bg-gradient-to-r before:from-primary before:via-accent2 before:to-accent"
             >
               <img

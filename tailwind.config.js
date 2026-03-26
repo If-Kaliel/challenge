@@ -5,6 +5,14 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      xs:      '480px',   // Mobile (obrigatório: até 480px)
+      sm:      '640px',
+      md:      '768px',   // Tablet (obrigatório: 768px)
+      lg:      '1024px',
+      desktop: '992px',   // Desktop (obrigatório: 992px+)
+      xl:      '1280px',
+    },
     extend: {
       colors: {
         primary: {
