@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import logoTexto from '../assets/img/logo_nome.png';
 
 const navLinks = [
   { to: '/',        label: 'Início'  },
@@ -20,9 +21,11 @@ export function Footer() {
 
         {/* Brand */}
         <div className="flex-[1.2] min-w-[180px]">
-          <span className="block font-extrabold text-[1.4rem] text-accent tracking-[-1px] mb-3.5">
-            SM
-          </span>
+          <img
+            src={logoTexto}
+            alt="Simple Manager"
+            className="h-10 w-auto mb-3.5"
+          />
           <p className="text-[0.88rem] leading-[1.7] text-white/55">
             Sistema de gestão de equipes moderno,<br />
             desenvolvido para otimizar o RH.

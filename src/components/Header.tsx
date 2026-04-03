@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import logoTexto from '../assets/img/logo_nome.png';
 
 const navLinks = [
   { to: '/',        label: 'Início',  end: true  },
@@ -18,9 +19,11 @@ export function Header() {
     <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-6 md:px-10 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
 
       {/* Brand / Logo */}
-      <span className="font-extrabold text-[1.3rem] text-accent tracking-[-1px] shrink-0 select-none">
-        SM
-      </span>
+      <img
+        src={logoTexto}
+        alt="Simple Manager"
+        className="h-9 w-auto shrink-0 select-none"
+      />
 
       {/* Hamburger — visível abaixo de 992px (desktop) */}
       <button
