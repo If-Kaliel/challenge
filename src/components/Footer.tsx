@@ -25,6 +25,8 @@ export function Footer() {
             <img
               src={logoTexto}
               alt="Simple Manager"
+              loading="eager"
+              decoding="async"
               className="h-12 md:h-14 w-auto"
             />
           </div>

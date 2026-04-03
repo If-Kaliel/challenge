@@ -46,6 +46,8 @@ export function Header() {
         <img
           src={logoTexto}
           alt="Simple Manager"
+          loading="eager"
+          decoding="async"
           className="h-11 md:h-12 w-auto shrink-0 select-none"
         />
       </div>

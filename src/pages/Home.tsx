@@ -23,6 +23,9 @@ export function Home() {
         <img
           src={tdb1}
           alt="Ilustração de uma equipe de trabalho utilizando o sistema Simple Manager."
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="relative w-full max-w-[720px] rounded-2xl mx-auto block shadow-[0_16px_48px_rgba(0,0,0,0.4)] border border-white/10 transition-transform duration-300 hover:scale-[1.01]"
         />
         <div className="relative mt-7 bg-white/[0.07] border border-white/[0.12] rounded-lg px-9 py-6 text-left">

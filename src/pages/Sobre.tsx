@@ -27,6 +27,8 @@ export function Sobre() {
         </div>
         <div className="shrink-0 w-full md:w-[340px] relative z-10">
           <img src={produtividadeImg} alt="Interface do Simple Manager"
+            loading="eager"
+            decoding="async"
             className="w-full rounded-2xl object-cover shadow-[0_20px_60px_rgba(0,0,0,0.45)] border border-white/10 transition-transform duration-300 hover:scale-[1.02]"
           />
         </div>

@@ -19,6 +19,8 @@ export function Equipe() {
               <img
                 src={m.img}
                 alt={m.nome}
+                loading="lazy"
+                decoding="async"
                 className="w-[110px] h-[110px] rounded-full object-cover mx-auto mb-4 shadow-[0_4px_16px_rgba(79,70,229,0.2)]"
                 style={{ border: '4px solid transparent', background: 'linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#4f46e5,#06b6d4) border-box' }}
               />
