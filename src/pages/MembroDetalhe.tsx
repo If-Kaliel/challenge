@@ -1,57 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components';
-
-interface Membro {
-  id: string;
-  nome: string;
-  rm: string;
-  turma: string;
-  bio: string;
-  github: string;
-  linkedin: string;
-  github_label: string;
-  linkedin_label: string;
-  habilidades: string[];
-}
-
-const membros: Membro[] = [
-  {
-    id: 'kaliel',
-    nome: 'Kaliel Conceição de Aquino',
-    rm: '567587',
-    turma: '1TDSPB',
-    bio: 'Estudante de Análise e Desenvolvimento de Sistemas na FIAP. Desenvolvedor front-end com interesse em React, TypeScript e experiência do usuário. Responsável pela arquitetura principal do projeto Simple Manager.',
-    github: 'https://github.com/If-Kaliel',
-    linkedin: 'https://www.linkedin.com/in/kaliel-aquino-a034332b6',
-    github_label: 'GitHub Kaliel',
-    linkedin_label: 'LinkedIn Kaliel',
-    habilidades: ['React', 'TypeScript', 'TailwindCSS', 'Vite', 'Git'],
-  },
-  {
-    id: 'matheus',
-    nome: 'Matheus Carneiro Maciel',
-    rm: '567753',
-    turma: '1TDSPB',
-    bio: 'Estudante de ADS na FIAP com foco em desenvolvimento web e mobile. Contribuiu com a estruturação das páginas e componentização do projeto Simple Manager.',
-    github: 'https://github.com/kakarneiro',
-    linkedin: 'https://www.linkedin.com/in/matheus-carneiro-maciel',
-    github_label: 'GitHub Matheus',
-    linkedin_label: 'LinkedIn Matheus',
-    habilidades: ['React', 'JavaScript', 'CSS', 'HTML', 'Git'],
-  },
-  {
-    id: 'guilherme',
-    nome: 'Guilherme Anitelli',
-    rm: '566744',
-    turma: '1TDSPB',
-    bio: 'Estudante de ADS na FIAP. Contribuiu com o design e estilização das páginas do projeto, além de auxiliar na validação do formulário de contato.',
-    github: 'https://github.com/GuilhermeAnitelli',
-    linkedin: 'https://www.linkedin.com/in/guilherme-anitelli',
-    github_label: 'GitHub Guilherme',
-    linkedin_label: 'LinkedIn Guilherme',
-    habilidades: ['UI Design', 'CSS', 'React', 'TailwindCSS', 'Git'],
-  },
-];
+import { membros } from '../data/membros';
 
 export function MembroDetalhe() {
   // useParams: captura o parâmetro dinâmico :id da rota /equipe/:id
@@ -119,10 +68,10 @@ export function MembroDetalhe() {
 
         {/* Links */}
         <div className="border-t border-border px-8 md:px-12 py-6 flex gap-3 flex-wrap">
-          <a href={membro.github} target="_blank" rel="noopener noreferrer" aria-label={membro.github_label}>
+          <a href={membro.github} target="_blank" rel="noopener noreferrer" aria-label={membro.githubLabel}>
             <Button variant="outline">GitHub</Button>
           </a>
-          <a href={membro.linkedin} target="_blank" rel="noopener noreferrer" aria-label={membro.linkedin_label}>
+          <a href={membro.linkedin} target="_blank" rel="noopener noreferrer" aria-label={membro.linkedinLabel}>
             <Button variant="primary">LinkedIn</Button>
           </a>
         </div>

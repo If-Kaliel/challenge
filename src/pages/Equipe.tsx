@@ -1,43 +1,5 @@
 import { Link } from 'react-router-dom';
-import kalielImg from '../assets/img/Kaliel.jpg';
-import matheusImg from '../assets/img/Matheus Maciel.jpg';
-import guilhermeImg from '../assets/img/Guilherme.jpg';
-
-const membros = [
-  {
-    id: 'kaliel',
-    img: kalielImg,
-    nome: 'Kaliel Conceição de Aquino',
-    rm: 'RM: 567587 • Turma: 1TDSPB',
-    github: 'https://github.com/If-Kaliel',
-    linkedin: 'https://www.linkedin.com/in/kaliel-aquino-a034332b6',
-    githubLabel: 'GitHub Kaliel',
-    linkedinLabel: 'LinkedIn Kaliel',
-    bio: 'Estudante de ADS — desenvolvedor front-end do projeto.',
-  },
-  {
-    id: 'matheus',
-    img: matheusImg,
-    nome: 'Matheus Carneiro Maciel',
-    rm: 'RM: 567753 • Turma: 1TDSPB',
-    github: 'https://github.com/kakarneiro',
-    linkedin: 'https://www.linkedin.com/in/matheus-carneiro-maciel',
-    githubLabel: 'GitHub Matheus',
-    linkedinLabel: 'LinkedIn Matheus',
-    bio: 'Estudante de ADS — contribuiu com páginas e componentes.',
-  },
-  {
-    id: 'guilherme',
-    img: guilhermeImg,
-    nome: 'Guilherme Anitelli',
-    rm: 'RM: 566744 • Turma: 1TDSPB',
-    github: 'https://github.com/GuilhermeAnitelli',
-    linkedin: 'https://www.linkedin.com/in/guilherme-anitelli',
-    githubLabel: 'GitHub Guilherme',
-    linkedinLabel: 'LinkedIn Guilherme',
-    bio: 'Estudante de ADS — design e estilização da interface.',
-  },
-];
+import { membros } from '../data/membros';
 
 export function Equipe() {
   return (
@@ -61,7 +23,7 @@ export function Equipe() {
                 style={{ border: '4px solid transparent', background: 'linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#4f46e5,#06b6d4) border-box' }}
               />
               <h3 className="text-base font-bold text-brand-text mb-1">{m.nome}</h3>
-              <div className="text-muted text-sm mb-2">{m.rm}</div>
+              <div className="text-muted text-sm mb-2">RM: {m.rm} • Turma: {m.turma}</div>
 
               {/* Links externos */}
               <div className="flex justify-center gap-2 mt-2">

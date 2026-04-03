@@ -11,6 +11,8 @@ interface ContatoFormData {
   mensagem: string;
 }
 
+type MensagemSalva = ContatoFormData & { data: string };
+
 export function Contato() {
   const navigate = useNavigate();
   const [status, setStatus] = useState<FormStatus>({ type: null, text: '' });
@@ -22,15 +24,39 @@ export function Contato() {
     formState: { errors },
   } = useForm<ContatoFormData>();
 
-  const onSubmit: SubmitHandler<ContatoFormData> = (data) => {
-    const registros = JSON.parse(localStorage.getItem('mensagens') ?? '[]');
-    registros.push({ ...data, data: new Date().toLocaleString() });
-    localStorage.setItem('mensagens', JSON.stringify(registros));
+  const getMensagensSalvas = (): MensagemSalva[] => {
+    try {
+      const raw = localStorage.getItem('mensagens');
+      if (!raw) {
+        return [];
+      }
 
-    setStatus({ type: 'success', text: '✓ Mensagem enviada! Redirecionando...' });
-    reset();
-    // useNavigate: redireciona para home após 2 segundos
-    setTimeout(() => navigate('/'), 2000);
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const onSubmit: SubmitHandler<ContatoFormData> = (data) => {
+    try {
+      const registros = getMensagensSalvas();
+      const payload: MensagemSalva = {
+        nome: data.nome.trim(),
+        email: data.email.trim().toLowerCase(),
+        mensagem: data.mensagem.trim(),
+        data: new Date().toLocaleString(),
+      };
+
+      registros.push(payload);
+      localStorage.setItem('mensagens', JSON.stringify(registros));
+
+      setStatus({ type: 'success', text: '✓ Mensagem enviada! Redirecionando...' });
+      reset();
+      setTimeout(() => navigate('/'), 2000);
+    } catch {
+      setStatus({ type: 'error', text: 'Não foi possível enviar agora. Tente novamente.' });
+    }
   };
 
   const inputBase =
@@ -62,7 +88,15 @@ export function Contato() {
               type="text"
               placeholder="Seu nome"
               className={`${inputBase} ${errors.nome ? 'border-red-600' : ''}`}
-              {...register('nome', { required: 'Preencha este campo' })}
+              {...register('nome', {
+                required: 'Preencha este campo',
+                minLength: {
+                  value: 2,
+                  message: 'Digite ao menos 2 caracteres',
+                },
+                validate: (value) =>
+                  value.trim().length >= 2 || 'Digite ao menos 2 caracteres',
+              })}
             />
             {errors.nome && (
               <p className="text-red-600 text-[0.82rem] mt-1 font-medium">{errors.nome.message}</p>
@@ -76,7 +110,7 @@ export function Contato() {
             </label>
             <input
               id="email"
-              type="text"
+              type="email"
               placeholder="seu@exemplo.com"
               className={`${inputBase} ${errors.email ? 'border-red-600' : ''}`}
               {...register('email', {
@@ -102,7 +136,15 @@ export function Contato() {
               rows={4}
               placeholder="Descreva sua solicitação..."
               className={`${inputBase} resize-y min-h-[130px] ${errors.mensagem ? 'border-red-600' : ''}`}
-              {...register('mensagem', { required: 'Preencha este campo' })}
+              {...register('mensagem', {
+                required: 'Preencha este campo',
+                minLength: {
+                  value: 10,
+                  message: 'Digite ao menos 10 caracteres',
+                },
+                validate: (value) =>
+                  value.trim().length >= 10 || 'Digite ao menos 10 caracteres',
+              })}
             />
             {errors.mensagem && (
               <p className="text-red-600 text-[0.82rem] mt-1 font-medium">{errors.mensagem.message}</p>
@@ -115,7 +157,11 @@ export function Contato() {
             <div
               id="contact-status"
               aria-live="polite"
-              className="mt-4 px-4 py-3.5 rounded-md text-center font-bold text-[0.95rem] bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 border border-emerald-300"
+              className={`mt-4 px-4 py-3.5 rounded-md text-center font-bold text-[0.95rem] border ${
+                status.type === 'success'
+                  ? 'bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 border-emerald-300'
+                  : 'bg-gradient-to-br from-rose-100 to-rose-200 text-rose-800 border-rose-300'
+              }`}
             >
               {status.text}
             </div>
