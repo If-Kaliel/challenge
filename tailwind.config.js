@@ -31,10 +31,10 @@ export default {
         muted:  '#6b7280',
       },
       fontFamily: {
-        sans: ['Inter', 'Segoe UI', 'sans-serif'],
+            'header-gradient':  'linear-gradient(90deg, #141a3a 0%, #243a73 100%)',
       },
       borderRadius: {
-        sm:    '8px',
+            'footer-gradient':  'linear-gradient(90deg, #141a3a 0%, #243a73 100%)',
         md:    '10px',
         lg:    '14px',
         xl:    '18px',
@@ -48,10 +48,10 @@ export default {
       },
       backgroundImage: {
         'hero-gradient':    'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e3a5f 100%)',
-        'header-gradient':  'linear-gradient(90deg, #0f0f1a 0%, #1e1b4b 100%)',
+        'header-gradient':  'linear-gradient(90deg, #141a3a 0%, #243a73 100%)',
         'btn-gradient':     'linear-gradient(135deg, #4f46e5 0%, #8b5cf6 100%)',
         'feature-gradient': 'linear-gradient(135deg, #eff6ff 0%, #f5f3ff 100%)',
-        'footer-gradient':  'linear-gradient(90deg, #0f0f1a 0%, #1e1b4b 100%)',
+        'footer-gradient':  'linear-gradient(90deg, #141a3a 0%, #243a73 100%)',
       },
     },
   },

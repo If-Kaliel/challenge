@@ -19,11 +19,13 @@ export function Header() {
     <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-6 md:px-10 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
 
       {/* Brand / Logo */}
-      <img
-        src={logoTexto}
-        alt="Simple Manager"
-        className="h-9 w-auto shrink-0 select-none"
-      />
+      <div className="bg-white/12 rounded-xl px-2.5 py-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] backdrop-blur-sm">
+        <img
+          src={logoTexto}
+          alt="Simple Manager"
+          className="h-11 md:h-12 w-auto shrink-0 select-none"
+        />
+      </div>
 
       {/* Hamburger — visível abaixo de 992px (desktop) */}
       <button

@@ -21,11 +21,13 @@ export function Footer() {
 
         {/* Brand */}
         <div className="flex-[1.2] min-w-[180px]">
-          <img
-            src={logoTexto}
-            alt="Simple Manager"
-            className="h-10 w-auto mb-3.5"
-          />
+          <div className="inline-flex bg-white/10 rounded-xl px-2.5 py-1.5 mb-3.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] backdrop-blur-sm">
+            <img
+              src={logoTexto}
+              alt="Simple Manager"
+              className="h-12 md:h-14 w-auto"
+            />
+          </div>
           <p className="text-[0.88rem] leading-[1.7] text-white/55">
             Sistema de gestão de equipes moderno,<br />
             desenvolvido para otimizar o RH.
