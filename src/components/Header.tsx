@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logoTexto from '../assets/img/logo_nome.png';
 
@@ -13,6 +13,29 @@ const navLinks = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+  const menuId = 'main-navigation';
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    const firstLink = navRef.current?.querySelector('a');
+    firstLink?.focus();
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [menuOpen]);
+
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -30,7 +53,8 @@ export function Header() {
       {/* Hamburger — visível abaixo de 992px (desktop) */}
       <button
         className="flex desktop:hidden items-center justify-center w-10 h-10 rounded-lg bg-transparent border-2 border-white/30 text-white text-lg cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-accent hover:text-accent"
-        aria-label="Abrir menu"
+        aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+        aria-controls={menuId}
         aria-expanded={menuOpen}
         onClick={() => setMenuOpen(!menuOpen)}
       >
@@ -39,6 +63,8 @@ export function Header() {
 
       {/* Navegação */}
       <nav
+        id={menuId}
+        ref={navRef}
         role="navigation"
         aria-label="Menu principal"
         className={
