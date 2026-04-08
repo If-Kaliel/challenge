@@ -1,0 +1,51 @@
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ===== TAILWIND CSS ===== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== VARIÁVEIS GLOBAIS ===== */
+/* Mantidas para compatibilidade com inline styles que referenciam var() */
+:root {
+  --primary:      #4f46e5;
+  --primary-dark: #3730a3;
+  --accent:       #06b6d4;
+  --accent2:      #8b5cf6;
+  --bg:           #eaf1ff;
+  --surface:      #ffffff;
+  --dark:         #0f0f1a;
+  --text:         #1e1b4b;
+  --muted:        #6b7280;
+  --border:       #e0e7ff;
+}
+
+/* ===== BASE GLOBAL ===== */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ===== SCROLLBAR CUSTOMIZADA ===== */
+/* Não pode ser feita com Tailwind — mantida aqui */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
