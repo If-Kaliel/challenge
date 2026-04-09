@@ -1,4 +1,4 @@
-import tdb1 from '../assets/img/tdb1.jpg';
+import tdb1 from '../img/tdb1.jpg';
 import { Card } from '../components';
 
 

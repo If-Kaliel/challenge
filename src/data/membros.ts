@@ -1,6 +1,6 @@
-import kalielImg from '../assets/img/Kaliel.jpg';
-import matheusImg from '../assets/img/Matheus Maciel.jpg';
-import guilhermeImg from '../assets/img/Guilherme.jpg';
+import kalielImg from '../img/Kaliel.jpg';
+import matheusImg from '../img/Matheus Maciel.jpg';
+import guilhermeImg from '../img/Guilherme.jpg';
 
 export interface Membro {
   id: string;

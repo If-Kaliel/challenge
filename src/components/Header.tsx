@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logoTexto from '../assets/img/logo_nome.png';
+import logoTexto from '../img/logo_nome.png';
 
 const navLinks = [
   { to: '/',        label: 'Início',  end: true  },
