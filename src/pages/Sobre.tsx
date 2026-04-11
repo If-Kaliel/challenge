@@ -1,4 +1,4 @@
-import produtividadeImg from '../assets/img/Produtividade.jpg';
+import produtividadeImg from '../img/Produtividade.jpg';
 import { Card } from '../components';
 
 export function Sobre() {
