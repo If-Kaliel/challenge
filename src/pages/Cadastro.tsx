@@ -1,144 +1,65 @@
-// Sistema TDB - Integrando Java e database. Aqui ficará o setup inicial preparando o terreno para a sprint 4. Na sprint 4 integraremos o backend com o front.
-
 import { useForm } from 'react-hook-form';
-
-interface CadastroFormData {
-  nome: string;
-  cpf: string;
-  dataNasc: string;
-  endereco: string;
-}
-
-//Não pretendo estilizar a página agora ou mexer muito nela, quero saber se o console vai funcionar.
-
-//É válido lembrar que a entrega para a TDB em si vai ser diferente deste projeto... Espero uma reformulação para a Sprint 4 para virar a dashboard completa.
 
 export function Cadastro() {
 
-  const { register, handleSubmit, formState: { errors } } = useForm<CadastroFormData>();
-
-
-
-  const onSubmit = (data: CadastroFormData) => {
-
-    console.log("Dados prontos para o Java:", data);
-
-    alert("Cadastro simulado com sucesso!");
-
-  };
-
-
+  // 1. Hook para Beneficiário
+  const { register: regBen, handleSubmit: handBen } = useForm();
+  // 2. Hook para Dentista
+  const { register: regDen, handleSubmit: handDen } = useForm();
+  // 3. Hook para Doação
+  const { register: regDoa, handleSubmit: handDoa } = useForm();
 
   return (
-
-    <div className="max-w-[600px] mx-auto my-12 px-6">
-
-      <section className="bg-surface rounded-xl p-8 shadow-lg border border-border">
-
-        <h2 className="text-2xl font-bold text-brand-text mb-6 border-l-4 border-primary pl-4">
-
-          Cadastro de Beneficiário
-
-        </h2>
+    <div className="max-w-[1140px] mx-auto my-10 px-4">
+      <h1 className="text-3xl font-bold text-brand-text mb-8 text-center">Painel de Gestão - Turma do Bem</h1>
+      
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
         
+        {/* SEÇÃO: BENEFICIÁRIO */}
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-
-          <div>
-
-            <label className="block text-sm font-medium text-muted mb-1">Nome Completo</label>
-
-            <input 
-
-              {...register("nome", { required: "Nome é obrigatório" })}
-
-              className="w-full p-2.5 rounded-lg bg-background border border-border text-brand-text focus:ring-2 focus:ring-primary outline-none transition-all"
-
-              placeholder="Ex: Kaliel Draugen"
-
-            />
-
-            {errors.nome && <span className="text-red-500 text-xs">{errors.nome.message}</span>}
-
-          </div>
-
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-            <div>
-
-              <label className="block text-sm font-medium text-muted mb-1">CPF</label>
-
-              <input 
-
-                {...register("cpf", { required: "CPF é obrigatório" })}
-
-                className="w-full p-2.5 rounded-lg bg-background border border-border text-brand-text focus:ring-2 focus:ring-primary outline-none"
-
-                placeholder="000.000.000-00"
-
-              />
-
+        <section className="bg-surface p-6 rounded-xl shadow-md border border-border">
+          <h2 className="text-xl font-bold text-primary mb-4 border-b pb-2">Novo Beneficiário</h2>
+          <form onSubmit={handBen((data) => console.log("JAVA -> Beneficiário:", data))} className="space-y-4">
+            <input {...regBen("nome")} placeholder="Nome Completo" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
+            <div className="grid grid-cols-2 gap-2">
+              <input {...regBen("cpf")} placeholder="CPF" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
+              <input {...regBen("dataNasc")} type="date" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
             </div>
+            <button className="w-full bg-primary py-2 rounded text-white font-bold hover:opacity-90">Salvar no Oracle</button>
+          </form>
+        </section>
 
-            <div>
-
-              <label className="block text-sm font-medium text-muted mb-1">Data de Nascimento</label>
-
-              <input 
-
-                type="date"
-
-                {...register("dataNasc", { required: true })}
-
-                className="w-full p-2.5 rounded-lg bg-background border border-border text-brand-text focus:ring-2 focus:ring-primary outline-none"
-
-              />
-
+        {/* SEÇÃO: DENTISTA */}
+        <section className="bg-surface p-6 rounded-xl shadow-md border border-border">
+          <h2 className="text-xl font-bold text-accent mb-4 border-b pb-2">Novo Dentista (Voluntário)</h2>
+          <form onSubmit={handDen((data) => console.log("JAVA -> Dentista:", data))} className="space-y-4">
+            <input {...regDen("nome")} placeholder="Nome do Profissional" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
+            <div className="grid grid-cols-2 gap-2">
+              <input {...regDen("cro")} placeholder="CRO (Ex: SP-12345)" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
+              <input {...regDen("especialidade")} placeholder="Especialidade" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
             </div>
+            <button className="w-full bg-accent py-2 rounded text-white font-bold hover:opacity-90">Cadastrar Dentista</button>
+          </form>
+        </section>
 
-          </div>
+        {/* SEÇÃO: DOAÇÃO  */}
+        <section className="bg-surface p-6 rounded-xl shadow-md border border-border lg:col-span-2">
+          <h2 className="text-xl font-bold text-green-500 mb-4 border-b pb-2">Registrar Nova Doação</h2>
+          <form onSubmit={handDoa((data) => console.log("JAVA -> Doação:", data))} className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+            <div>
+              <label className="text-xs text-muted ml-1">Doador/Empresa</label>
+              <input {...regDoa("doador")} className="w-full p-2 rounded bg-background border border-border text-brand-text" />
+            </div>
+            <div>
+              <label className="text-xs text-muted ml-1">Valor (R$)</label>
+              <input {...regDoa("valor")} type="number" step="0.01" className="w-full p-2 rounded bg-background border border-border text-brand-text" />
+            </div>
+            <button className="bg-green-600 py-2 rounded text-white font-bold hover:bg-green-700 transition-colors">Confirmar Recebimento</button>
+          </form>
+        </section>
 
-
-
-          <div>
-
-            <label className="block text-sm font-medium text-muted mb-1">Endereço Residencial</label>
-
-            <input 
-
-              {...register("endereco")}
-
-              className="w-full p-2.5 rounded-lg bg-background border border-border text-brand-text focus:ring-2 focus:ring-primary outline-none"
-
-              placeholder="Rua, Número, Bairro..."
-
-            />
-
-          </div>
-
-
-
-          <button 
-
-            type="submit"
-
-            className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-lg shadow-md transition-transform active:scale-[0.98]"
-
-          >
-
-            Finalizar Cadastro
-
-          </button>
-
-        </form>
-
-      </section>
-
+      </div>
     </div>
-
   );
-
 }
