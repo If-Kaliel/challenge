@@ -15,6 +15,8 @@ export function Cadastro() {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
+        {/* SABEDORIA DO DIA: O usuário quer UI bonitinha e botão arredondado, então entrego isso. Se o console logou, a paz reinou. */}
+
         
         {/* SEÇÃO: BENEFICIÁRIO */}
 

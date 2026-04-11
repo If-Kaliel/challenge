@@ -6,3 +6,4 @@ export { FAQ } from './FAQ';
 export { Contato } from './Contato';
 export { Solucao } from './Solucao';
 export { MembroDetalhe } from './MembroDetalhe';
+export { Cadastro } from './Cadastro';
