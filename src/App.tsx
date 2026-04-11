@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components';
 import { Home, Equipe, Sobre, FAQ, Contato, Solucao, MembroDetalhe } from './pages';
+import { Cadastro } from './pages/Cadastro';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <Route path="faq" element={<FAQ />} />
           <Route path="contato" element={<Contato />} />
           <Route path="solucao" element={<Solucao />} />
-          {/* Rota dinâmica com parâmetro :id */}
+          <Route path="cadastro" element={<Cadastro />} />
           <Route path="equipe/:id" element={<MembroDetalhe />} />
         </Route>
       </Routes>
