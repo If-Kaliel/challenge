@@ -149,7 +149,7 @@ export function Dashboard() {
     .sort((a, b) => b.total - a.total);
 
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
+    <div className="max-w-[1140px] w-full mx-auto my-6 xs:my-8 sm:my-10 lg:my-12 xl:my-14 px-3 xs:px-4 sm:px-6 lg:px-7 xl:px-8">
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-hero-gradient text-white rounded-[20px] px-6 py-10 xs:px-10 xs:py-12 md:px-14 md:py-14 mb-7">
@@ -177,12 +177,14 @@ export function Dashboard() {
       </section>
 
       {/* KPI Cards — usa interface KpiData */}
-      <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-7 transition-all duration-700 ${animado ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <div className={`grid gap-3 xs:gap-4 sm:gap-5 xl:gap-6 mb-7 transition-all duration-700 ${animado ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+        grid-cols-2 lg:grid-cols-4`}>
         {kpis.map((kpi) => <KpiCard key={kpi.label} {...kpi} />)}
       </div>
 
       {/* Grid principal */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div className="grid gap-5 sm:gap-6 xl:gap-7 mb-6
+        grid-cols-1 md:grid-cols-2">
 
         {/* Distribuição por departamento */}
         <section className="bg-surface rounded-xl border border-border shadow-sm p-6 xs:p-7">

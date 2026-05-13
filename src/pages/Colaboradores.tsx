@@ -74,10 +74,12 @@ export function Colaboradores() {
   };
 
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
+    <div className="max-w-[1140px] w-full mx-auto my-6 xs:my-8 sm:my-10 lg:my-12 xl:my-14 px-3 xs:px-4 sm:px-6 lg:px-7 xl:px-8">
 
       {/* Cabeçalho da página */}
-      <section className="relative overflow-hidden bg-hero-gradient text-white rounded-[20px] px-6 py-10 xs:px-8 xs:py-12 md:px-12 md:py-14 mb-7 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-6">
+      <section className="relative overflow-hidden bg-hero-gradient text-white rounded-[20px]
+        px-4 py-8 xs:px-6 xs:py-10 sm:px-8 sm:py-11 md:px-12 md:py-12 lg:px-14 lg:py-14
+        mb-7 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-6">
         <div className="pointer-events-none absolute inset-0"
           style={{ background: 'radial-gradient(circle at 10% 50%, rgba(139,92,246,0.28) 0%, transparent 55%), radial-gradient(circle at 90% 20%, rgba(6,182,212,0.18) 0%, transparent 50%)' }}
         />
@@ -218,7 +220,8 @@ export function Colaboradores() {
         )}
 
         {!loading && colaboradores.length > 0 && (
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-5">
+          <div className="grid gap-4 sm:gap-5 lg:gap-5 xl:gap-6
+            grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {colaboradores.map((c) => (
               <article
                 key={c.id}

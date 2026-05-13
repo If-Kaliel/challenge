@@ -41,23 +41,26 @@ const membros = [
 
 export function Equipe() {
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
-      <section className="bg-surface rounded-lg p-6 md:p-9 mb-6 shadow-sm border border-border">
-        <h1 className="text-[1.5rem] font-bold text-brand-text mb-5 border-l-4 border-primary pl-3.5">
+    <div className="max-w-[1140px] w-full mx-auto my-6 xs:my-8 sm:my-10 lg:my-12 xl:my-14 px-3 xs:px-4 sm:px-6 lg:px-7 xl:px-8">
+      <section className="bg-surface rounded-lg shadow-sm border border-border p-5 xs:p-6 sm:p-7 lg:p-9 xl:p-10 mb-6">
+        <h1 className="font-bold text-brand-text mb-5 border-l-4 border-primary pl-3.5
+          text-[1.2rem] xs:text-[1.35rem] sm:text-[1.4rem] lg:text-[1.5rem] xl:text-[1.6rem]">
           Criadores do Projeto
         </h1>
 
-        <div className="flex flex-wrap gap-7">
+        {/* grid: 1 col mobile → 2 cols sm → 3 cols lg */}
+        <div className="grid gap-5 sm:gap-6 lg:gap-7 xl:gap-8
+          grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {membros.map((m) => (
             <div
               key={m.id}
-              className="relative overflow-hidden bg-surface rounded-[18px] px-6 py-8 md:px-8 md:py-9 text-center w-full md:w-[280px] shadow-md border border-border transition-transform duration-300 hover:-translate-y-2.5 hover:shadow-lg
+              className="relative overflow-hidden bg-surface rounded-[18px] px-4 py-6 xs:px-5 xs:py-7 sm:px-6 sm:py-8 lg:px-7 lg:py-9 text-center shadow-md border border-border transition-transform duration-300 hover:-translate-y-2.5 hover:shadow-lg
                 before:content-[''] before:absolute before:inset-x-0 before:top-0 before:h-[5px] before:bg-gradient-to-r before:from-primary before:via-accent2 before:to-accent"
             >
               <img
                 src={m.img}
                 alt={m.nome}
-                className="w-[110px] h-[110px] rounded-full object-cover mx-auto mb-4 shadow-[0_4px_16px_rgba(79,70,229,0.2)]"
+                className="w-[90px] h-[90px] xs:w-[100px] xs:h-[100px] sm:w-[110px] sm:h-[110px] rounded-full object-cover mx-auto mb-4 shadow-[0_4px_16px_rgba(79,70,229,0.2)]"
                 style={{ border: '4px solid transparent', background: 'linear-gradient(#fff,#fff) padding-box, linear-gradient(135deg,#4f46e5,#06b6d4) border-box' }}
               />
               <h3 className="text-base font-bold text-brand-text mb-1">{m.nome}</h3>

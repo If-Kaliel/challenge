@@ -17,10 +17,10 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-footer-gradient text-white/70 mt-auto pt-14 px-10">
+    <footer className="bg-footer-gradient text-white/70 mt-auto pt-10 sm:pt-12 lg:pt-14 px-4 xs:px-6 sm:px-8 lg:px-10 xl:px-14">
 
       {/* Corpo do footer */}
-      <div className="max-w-[1140px] mx-auto flex flex-col xs:flex-row flex-wrap gap-8 xs:gap-12 justify-between pb-10 border-b border-white/[0.08]">
+      <div className="max-w-[1140px] mx-auto flex flex-col xs:flex-row flex-wrap gap-8 xs:gap-10 sm:gap-12 xl:gap-16 justify-between pb-10 border-b border-white/[0.08]">
 
         {/* Brand */}
         <div className="flex-[1.2] min-w-[180px]">

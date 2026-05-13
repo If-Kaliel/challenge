@@ -19,10 +19,10 @@ export function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-6 md:px-10 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
+    <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-4 xs:px-6 sm:px-8 lg:px-10 xl:px-14 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
 
       {/* Brand / Logo */}
-      <span className="font-extrabold text-[1.3rem] text-accent tracking-[-1px] shrink-0 select-none">
+      <span className="font-extrabold text-[1.2rem] sm:text-[1.3rem] lg:text-[1.4rem] text-accent tracking-[-1px] shrink-0 select-none">
         SM
       </span>
 
