@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import type { SubmitHandler } from 'react-hook-form';
 import { useColaboradores } from '../hooks';
@@ -247,11 +248,19 @@ export function Colaboradores() {
                 {/* Email */}
                 <a
                   href={`mailto:${c.email}`}
-                  className="block text-[0.82rem] text-muted hover:text-primary transition-colors duration-150 truncate"
+                  className="block text-[0.82rem] text-muted hover:text-primary transition-colors duration-150 truncate mb-4"
                   title={c.email}
                 >
                   ✉ {c.email}
                 </a>
+
+                {/* Link para rota dinâmica /colaboradores/:id */}
+                <Link
+                  to={`/colaboradores/${c.id}`}
+                  className="mt-auto inline-block w-full text-center text-[0.82rem] font-semibold text-primary border border-primary rounded-lg py-1.5 no-underline transition-all duration-200 hover:bg-primary hover:text-white"
+                >
+                  Ver perfil completo →
+                </Link>
               </article>
             ))}
           </div>
