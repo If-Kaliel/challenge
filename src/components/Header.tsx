@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import type { NavItem } from '../types';
 
-const navLinks = [
+// NavItem: interface com { to: string; label: string; end?: boolean }
+const navLinks: NavItem[] = [
   { to: '/',              label: 'Início',        end: true  },
   { to: '/equipe',        label: 'Equipe',        end: false },
   { to: '/sobre',         label: 'Sobre',         end: false },
