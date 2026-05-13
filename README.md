@@ -89,6 +89,7 @@ challenge/
 | `/contato` | Contato |
 | `/solucao` | Solução do Projeto |
 | `/colaboradores` | Colaboradores (integração API Java) |
+| `/dashboard` | Dashboard de RH (indicadores e métricas) |
 
 ---
 

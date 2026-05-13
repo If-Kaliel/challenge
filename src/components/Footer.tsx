@@ -4,6 +4,7 @@ const navLinks = [
   { to: '/',              label: 'Início'        },
   { to: '/equipe',        label: 'Equipe'        },
   { to: '/sobre',         label: 'Sobre'         },
+  { to: '/dashboard',     label: 'Dashboard'     },
   { to: '/colaboradores', label: 'Colaboradores' },
   { to: '/faq',           label: 'FAQ'           },
   { to: '/contato',       label: 'Contato'       },
