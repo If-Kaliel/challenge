@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom';
 
 const navLinks = [
-  { to: '/',        label: 'Início'  },
-  { to: '/equipe',  label: 'Equipe'  },
-  { to: '/sobre',   label: 'Sobre'   },
-  { to: '/faq',     label: 'FAQ'     },
-  { to: '/contato', label: 'Contato' },
-  { to: '/solucao', label: 'Solução' },
+  { to: '/',              label: 'Início'        },
+  { to: '/equipe',        label: 'Equipe'        },
+  { to: '/sobre',         label: 'Sobre'         },
+  { to: '/colaboradores', label: 'Colaboradores' },
+  { to: '/faq',           label: 'FAQ'           },
+  { to: '/contato',       label: 'Contato'       },
+  { to: '/solucao',       label: 'Solução'       },
 ];
 
 export function Footer() {
@@ -16,7 +17,7 @@ export function Footer() {
     <footer className="bg-footer-gradient text-white/70 mt-auto pt-14 px-10">
 
       {/* Corpo do footer */}
-      <div className="max-w-[1140px] mx-auto flex flex-wrap gap-12 justify-between pb-10 border-b border-white/[0.08]">
+      <div className="max-w-[1140px] mx-auto flex flex-col xs:flex-row flex-wrap gap-8 xs:gap-12 justify-between pb-10 border-b border-white/[0.08]">
 
         {/* Brand */}
         <div className="flex-[1.2] min-w-[180px]">

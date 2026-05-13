@@ -6,3 +6,5 @@ export { FAQ } from './FAQ';
 export { Contato } from './Contato';
 export { Solucao } from './Solucao';
 export { MembroDetalhe } from './MembroDetalhe';
+export { Colaboradores } from './Colaboradores';
+

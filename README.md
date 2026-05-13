@@ -41,6 +41,11 @@ challenge/
 ├── src/
 │   ├── assets/
 │   │   └── img/                   # Imagens do projeto
+│   │       ├── Guilherme.jpg
+│   │       ├── Kaliel.jpg
+│   │       ├── MatheuxMaciel.jpg
+│   │       ├── Produtividade.jpg
+│   │       └── tdb1.jpg
 │   ├── components/
 │   │   ├── Button.tsx             # Botão reutilizável (variantes: primary, outline, ghost)
 │   │   ├── Card.tsx               # Card reutilizável (variantes: feature, stat, function)
@@ -49,24 +54,26 @@ challenge/
 │   │   ├── Layout.tsx             # Layout compartilhado (Header + Outlet + Footer)
 │   │   └── index.ts               # Barrel exports dos componentes
 │   ├── pages/
-│   │   ├── Home.tsx               # Página inicial
-│   │   ├── Equipe.tsx             # Integrantes do projeto
-│   │   ├── Sobre.tsx              # Sobre o sistema
-│   │   ├── FAQ.tsx                # Perguntas frequentes
 │   │   ├── Contato.tsx            # Formulário de contato (React Hook Form)
+│   │   ├── Equipe.tsx             # Integrantes do projeto
+│   │   ├── FAQ.tsx                # Perguntas frequentes
+│   │   ├── Home.tsx               # Página inicial
+│   │   ├── MembroDetalhe.tsx      # Perfil detalhado do integrante (rota dinâmica)
+│   │   ├── Sobre.tsx              # Sobre o sistema
 │   │   ├── Solucao.tsx            # Solução do projeto
 │   │   └── index.ts               # Barrel exports das páginas
 │   ├── types/
 │   │   └── index.ts               # Tipos TypeScript compartilhados
 │   ├── App.tsx                    # Configuração de rotas (React Router)
-│   ├── main.tsx                   # Entry point da aplicação
-│   └── index.css                  # Design System global + Tailwind CSS
+│   ├── index.css                  # Design System global + Tailwind CSS
+│   └── main.tsx                   # Entry point da aplicação
+├── .gitignore                     # node_modules e dist ignorados
 ├── index.html                     # HTML base
-├── tailwind.config.js             # Configuração do TailwindCSS
+├── package.json                   # Dependências e scripts
 ├── postcss.config.js              # Configuração do PostCSS
-├── vite.config.ts                 # Configuração do Vite
+├── tailwind.config.js             # Configuração do TailwindCSS
 ├── tsconfig.json                  # Configuração do TypeScript
-└── package.json                   # Dependências e scripts
+└── vite.config.ts                 # Configuração do Vite
 ```
 
 ---
@@ -81,6 +88,27 @@ challenge/
 | `/faq` | FAQ |
 | `/contato` | Contato |
 | `/solucao` | Solução do Projeto |
+| `/colaboradores` | Colaboradores (integração API Java) |
+
+---
+
+## 🌐 Como Usar
+
+> A aplicação está disponível em produção na Vercel e já consome a API Java remotamente.
+
+🔗 **URL Pública (Vercel):** [Em breve — será atualizado após o deploy](https://vercel.com)
+
+> ⚠️ Substitua o link acima pela URL real após realizar o deploy na Vercel.
+
+### Variavel de Ambiente da API Java
+
+Crie um arquivo `.env` na raiz com:
+
+```env
+VITE_API_URL=https://URL_DA_SUA_API_JAVA
+```
+
+Na Vercel, configure essa variável em **Settings → Environment Variables**.
 
 ---
 
@@ -102,7 +130,10 @@ cd challenge
 # 3. Instale as dependências
 npm install
 
-# 4. Inicie o servidor de desenvolvimento
+# 4. Configure a URL da API no .env
+echo VITE_API_URL=http://localhost:8080 > .env
+
+# 5. Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
@@ -126,6 +157,16 @@ Acesse em: **http://localhost:5173**
 | Kaliel Conceição de Aquino | 567587 | 1TDSPB | [@If-Kaliel](https://github.com/If-Kaliel) |
 | Matheus Carneiro Maciel | 567753 | 1TDSPB | [@kakarneiro](https://github.com/kakarneiro) |
 | Guilherme Anitelli | 566744 | 1TDSPB | [@GuilhermeAnitelli](https://github.com/GuilhermeAnitelli) |
+
+---
+
+## 🌐 Deploy
+
+A aplicação está disponível em produção na Vercel:
+
+🔗 **URL Pública:** [Em breve — aguardando deploy na Vercel](https://vercel.com)
+
+> ⚠️ O link será atualizado após o deploy obrigatório da Sprint 04.
 
 ---
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import kalielImg from '../assets/img/Kaliel.jpg';
-import matheusImg from '../assets/img/Matheus Maciel.jpg';
+import matheusImg from '../assets/img/MatheuxMaciel.jpg';
 import guilhermeImg from '../assets/img/Guilherme.jpg';
 
 const membros = [

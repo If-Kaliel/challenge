@@ -12,11 +12,11 @@ export function Home() {
         <div className="pointer-events-none absolute inset-0"
           style={{ background: 'radial-gradient(circle at 20% 50%, rgba(139,92,246,0.25) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(6,182,212,0.2) 0%, transparent 50%)' }}
         />
-        <h1 className="relative text-[2.6rem] font-extrabold leading-tight mb-4"
+        <h1 className="relative text-[1.8rem] xs:text-[2rem] md:text-[2.6rem] font-extrabold leading-tight mb-4"
           style={{ background: 'linear-gradient(90deg, #fff 30%, #06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
           Bem vindos ao Simple Manager
         </h1>
-        <p className="relative text-[1.1rem] text-white/75 max-w-[680px] mx-auto mb-8">
+        <p className="relative text-[0.95rem] xs:text-[1rem] md:text-[1.1rem] text-white/75 max-w-[680px] mx-auto mb-8">
           O Simple Manager é um sistema de gestão de equipes desenvolvido para otimizar o trabalho de
           departamentos de Recursos Humanos, integrando informações, produtividade e comunicação em um único ambiente.
         </p>

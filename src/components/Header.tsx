@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const navLinks = [
-  { to: '/',        label: 'Início',  end: true  },
-  { to: '/equipe',  label: 'Equipe',  end: false },
-  { to: '/sobre',   label: 'Sobre',   end: false },
-  { to: '/faq',     label: 'FAQ',     end: false },
-  { to: '/contato', label: 'Contato', end: false },
-  { to: '/solucao', label: 'Solução', end: false },
+  { to: '/',              label: 'Início',        end: true  },
+  { to: '/equipe',        label: 'Equipe',        end: false },
+  { to: '/sobre',         label: 'Sobre',         end: false },
+  { to: '/colaboradores', label: 'Colaboradores', end: false },
+  { to: '/faq',           label: 'FAQ',           end: false },
+  { to: '/contato',       label: 'Contato',       end: false },
+  { to: '/solucao',       label: 'Solução',       end: false },
 ];
 
 export function Header() {
