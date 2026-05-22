@@ -1,0 +1,20 @@
+// Barrel exports — páginas da aplicação
+export { Home } from './Home';
+export { FAQ } from './FAQ';
+export { Contato } from './Contato';
+export { MembroDetalhe } from './MembroDetalhe';
+export { Colaboradores } from './Colaboradores';
+export { ColaboradorDetalhe } from './ColaboradorDetalhe';
+export { BeneficiarioDetalhe } from './BeneficiarioDetalhe';
+export { Beneficiarios } from './Beneficiarios';
+export { Dashboard } from './Dashboard';
+export { NotFound } from './NotFound';
+export { Login } from './Login';
+export { Noticias } from './Noticias';
+export { Premios } from './Premios';
+export { Dentistas } from './Dentistas';
+export { DentistaDetalhe } from './DentistaDetalhe';
+export { Doacoes } from './Doacoes';
+export { DoacaoDetalhe } from './DoacaoDetalhe';
+export { Sobre } from './Sobre';
+export { Equipe } from './Equipe';
