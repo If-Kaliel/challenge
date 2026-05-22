@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logoTexto from '../img/logo_nome.png';
+import type { NavItem } from '../types';
 
-const navLinks = [
-  { to: '/',        label: 'Início',  end: true  },
-  { to: '/equipe',  label: 'Equipe',  end: false },
-  { to: '/sobre',   label: 'Sobre',   end: false },
-  { to: '/faq',     label: 'FAQ',     end: false },
-  { to: '/contato', label: 'Contato', end: false },
-  { to: '/solucao', label: 'Solução', end: false },
+// NavItem: interface com { to: string; label: string; end?: boolean }
+const navLinks: NavItem[] = [
+  { to: '/',              label: 'Início',        end: true  },
+  { to: '/equipe',        label: 'Equipe',        end: false },
+  { to: '/sobre',         label: 'Sobre',         end: false },
+  { to: '/dashboard',     label: 'Dashboard',     end: false },
+  { to: '/colaboradores', label: 'Colaboradores', end: false },
+  { to: '/faq',           label: 'FAQ',           end: false },
+  { to: '/contato',       label: 'Contato',       end: false },
+  { to: '/solucao',       label: 'Solução',       end: false },
 ];
 
 export function Header() {
@@ -39,18 +42,12 @@ export function Header() {
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-6 md:px-10 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
+    <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-4 xs:px-6 sm:px-8 lg:px-10 xl:px-14 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
 
       {/* Brand / Logo */}
-      <div className="bg-white/12 rounded-xl px-2.5 py-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] backdrop-blur-sm">
-        <img
-          src={logoTexto}
-          alt="Simple Manager"
-          loading="eager"
-          decoding="async"
-          className="h-11 md:h-12 w-auto shrink-0 select-none"
-        />
-      </div>
+      <span className="font-extrabold text-[1.2rem] sm:text-[1.3rem] lg:text-[1.4rem] text-accent tracking-[-1px] shrink-0 select-none">
+        SM
+      </span>
 
       {/* Hamburger — visível abaixo de 992px (desktop) */}
       <button

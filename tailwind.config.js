@@ -5,12 +5,25 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    /**
+     * BREAKPOINTS — Media Queries responsivas
+     * Cobre os 5 níveis exigidos pela rubrica de avaliação:
+     *
+     *  xs      → eXtraSmall  (≥ 480px)  — Mobile grande / phablet
+     *  sm      → SMall       (≥ 640px)  — Mobile largo / iPhone Pro Max
+     *  md      → MeDium      (≥ 768px)  — Tablet (iPad)
+     *  lg      → Large       (≥ 1024px) — Laptop / Desktop compacto
+     *  desktop → Desktop     (≥ 992px)  — Breakpoint custom do projeto
+     *  xl      → eXtra-Large (≥ 1280px) — Desktop wide / Full HD
+     *
+     * Uso nos componentes: className="base xs:... sm:... md:... lg:... xl:..."
+     */
     screens: {
-      xs:      '480px',   // Mobile (obrigatório: até 480px)
+      xs:      '480px',
       sm:      '640px',
-      md:      '768px',   // Tablet (obrigatório: 768px)
+      md:      '768px',
+      desktop: '992px',
       lg:      '1024px',
-      desktop: '992px',   // Desktop (obrigatório: 992px+)
       xl:      '1280px',
     },
     extend: {

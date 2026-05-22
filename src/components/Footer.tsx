@@ -1,23 +1,26 @@
 import { NavLink } from 'react-router-dom';
-import logoTexto from '../img/logo_nome.png';
+import type { NavItem } from '../types';
 
-const navLinks = [
-  { to: '/',        label: 'Início'  },
-  { to: '/equipe',  label: 'Equipe'  },
-  { to: '/sobre',   label: 'Sobre'   },
-  { to: '/faq',     label: 'FAQ'     },
-  { to: '/contato', label: 'Contato' },
-  { to: '/solucao', label: 'Solução' },
+// NavItem: interface com { to: string; label: string; end?: boolean }
+const navLinks: NavItem[] = [
+  { to: '/',              label: 'Início'        },
+  { to: '/equipe',        label: 'Equipe'        },
+  { to: '/sobre',         label: 'Sobre'         },
+  { to: '/dashboard',     label: 'Dashboard'     },
+  { to: '/colaboradores', label: 'Colaboradores' },
+  { to: '/faq',           label: 'FAQ'           },
+  { to: '/contato',       label: 'Contato'       },
+  { to: '/solucao',       label: 'Solução'       },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-footer-gradient text-white/70 mt-auto pt-14 px-10">
+    <footer className="bg-footer-gradient text-white/70 mt-auto pt-10 sm:pt-12 lg:pt-14 px-4 xs:px-6 sm:px-8 lg:px-10 xl:px-14">
 
       {/* Corpo do footer */}
-      <div className="max-w-[1140px] mx-auto flex flex-wrap gap-12 justify-between pb-10 border-b border-white/[0.08]">
+      <div className="max-w-[1140px] mx-auto flex flex-col xs:flex-row flex-wrap gap-8 xs:gap-10 sm:gap-12 xl:gap-16 justify-between pb-10 border-b border-white/[0.08]">
 
         {/* Brand */}
         <div className="flex-[1.2] min-w-[180px]">
