@@ -48,7 +48,7 @@ A plataforma oferece:
 
 ## 📁 Estrutura de Pastas
 
-```text
+```
 challenge/
 ├── public/                        # Arquivos estáticos públicos
 ├── src/
@@ -140,7 +140,7 @@ challenge/
 
 | Recurso | Link |
 |---|---|
-| 🌍 **Aplicação (Vercel)** | ⚠️ *Inserir URL após o deploy* |
+| 🌍 **Aplicação (Vercel)** | [""https://simple-manager-kappa.vercel.app/] |
 | 📁 **Repositório GitHub** | [https://github.com/If-Kaliel/challenge](https://github.com/If-Kaliel/challenge) |
 | 🎬 **Vídeo de Demonstração (YouTube)** | ⚠️ *Inserir link do vídeo após a gravação* |
 
