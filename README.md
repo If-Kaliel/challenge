@@ -179,7 +179,7 @@ challenge/
 
 ---
 
-### ▶️ Executar Localmente
+### ▶️ Executar Localmente na Máquina
 
 **Pré-requisitos:** [Node.js](https://nodejs.org/) v18+ e npm
 
