@@ -38,17 +38,28 @@ export function Contato() {
     }
   };
 
-  const onSubmit: SubmitHandler<ContatoFormData> = (data) => {
+  const onSubmit: SubmitHandler<ContatoFormData> = async (data) => {
     try {
-      const registros = getMensagensSalvas();
-      const payload: MensagemSalva = {
+      const payload = {
         nome: data.nome.trim(),
         email: data.email.trim().toLowerCase(),
         mensagem: data.mensagem.trim(),
-        data: new Date().toLocaleString(),
       };
 
-      registros.push(payload);
+      const res = await fetch(
+        (import.meta.env.VITE_API_URL || 'http://localhost:8080') + '/contato',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      if (!res.ok) throw new Error('Falha na requisição');
+
+      // Salva também no localStorage como cache local
+      const registros = getMensagensSalvas();
+      registros.push({ ...payload, data: new Date().toLocaleString() });
       localStorage.setItem('mensagens', JSON.stringify(registros));
 
       setStatus({ type: 'success', text: '✓ Mensagem enviada! Redirecionando...' });
