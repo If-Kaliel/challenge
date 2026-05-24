@@ -12,10 +12,6 @@ import { useAuth } from '../context/AuthContext';
 type FuncionarioDashboard = Funcionario & { departamento?: string; email?: string };
 type BeneficiarioDashboard = Beneficiario & { colaboradorId?: number | string };
 
-const TIPO_ICON: Record<TipoAtividade, string> = {
-  cadastro: '', atualizacao: '', exclusao: '',
-  ferias: '', relatorio: '', avaliacao: '',
-};
 
 const TIPO_COLOR: Record<TipoAtividade, string> = {
   cadastro: 'bg-indigo-100 text-indigo-600',
