@@ -1,52 +1,39 @@
 import { NavLink } from 'react-router-dom';
-import logoTexto from '../img/logo_nome.png';
+import type { NavItem } from '../types';
 
-const navLinks = [
-  { to: '/',        label: 'Início'  },
-  { to: '/equipe',  label: 'Equipe'  },
-  { to: '/sobre',   label: 'Sobre'   },
-  { to: '/faq',     label: 'FAQ'     },
-  { to: '/contato', label: 'Contato' },
-  { to: '/solucao', label: 'Solução' },
+const publicLinks: NavItem[] = [
+  { to: '/',        label: 'Início'   },
+  { to: '/sobre',   label: 'Sobre'    },
+  { to: '/equipe',  label: 'Equipe'   },
+  { to: '/noticias', label: 'Notícias' },
+  { to: '/premios', label: 'Prêmios'  },
+  { to: '/faq',     label: 'FAQ'      },
+  { to: '/contato', label: 'Contato'  },
 ];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-footer-gradient text-white/70 mt-auto pt-14 px-10">
+    <footer className="bg-footer-gradient text-white/80 mt-auto pt-4 sm:pt-6 px-4 xs:px-6 sm:px-8 lg:px-10 xl:px-14" aria-label="Rodapé">
+      <div className="max-w-285 mx-auto flex flex-col xs:flex-row flex-wrap gap-4 sm:gap-6 justify-between pb-4 border-b border-white/12 items-start">
 
-      {/* Corpo do footer */}
-      <div className="max-w-[1140px] mx-auto flex flex-wrap gap-12 justify-between pb-10 border-b border-white/[0.08]">
-
-        {/* Brand */}
-        <div className="flex-[1.2] min-w-[180px]">
-          <div className="inline-flex bg-white/10 rounded-xl px-2.5 py-1.5 mb-3.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] backdrop-blur-sm">
-            <img
-              src={logoTexto}
-              alt="Simple Manager"
-              loading="eager"
-              decoding="async"
-              className="h-12 md:h-14 w-auto"
-            />
-          </div>
-          <p className="text-[0.88rem] leading-[1.7] text-white/55">
-            Sistema de gestão de equipes moderno,<br />
-            desenvolvido para otimizar o RH.
+        <div className="flex-1 min-w-0">
+          <span className="block font-extrabold text-lg text-accent tracking-tight mb-2">SM</span>
+          <p className="text-sm leading-5 text-white/75">
+            Plataforma de gestão odontológica integrada,<br />
+            desenvolvida por estudantes da FIAP.
           </p>
         </div>
 
-        {/* Navegação */}
-        <nav className="flex-1 min-w-[140px]" aria-label="Links do rodapé">
-          <h3 className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-accent mb-4">
-            Navegação
-          </h3>
-          <ul className="flex flex-col gap-2.5 list-none p-0">
-            {navLinks.map(({ to, label }) => (
+        <nav className="flex-1 min-w-0" aria-label="Links do rodapé">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-accent mb-2">Navegação</h3>
+          <ul className="grid grid-cols-2 gap-2 list-none p-0">
+            {publicLinks.map(({ to, label }) => (
               <li key={to}>
                 <NavLink
                   to={to}
-                  className="text-white/60 no-underline text-[0.9rem] transition-colors duration-200 hover:text-white"
+                  className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark rounded-sm"
                 >
                   {label}
                 </NavLink>
@@ -55,27 +42,34 @@ export function Footer() {
           </ul>
         </nav>
 
-        {/* Contato */}
-        <div className="flex-1 min-w-[140px]">
-          <h3 className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-accent mb-4">
-            Contato
-          </h3>
-          <ul className="flex flex-col gap-2.5 list-none p-0">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-accent mb-2">Contato</h3>
+          <ul className="flex flex-col gap-2 list-none p-0">
             <li>
-              <a href="https://github.com/If-Kaliel" target="_blank" rel="noopener noreferrer"
-                className="text-white/60 no-underline text-[0.9rem] transition-colors duration-200 hover:text-white">
+              <a
+                href="https://github.com/If-Kaliel"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
+              >
                 GitHub
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer"
-                className="text-white/60 no-underline text-[0.9rem] transition-colors duration-200 hover:text-white">
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
+              >
                 LinkedIn
               </a>
             </li>
             <li>
-              <a href="mailto:contato@simplemanager.com"
-                className="text-white/60 no-underline text-[0.9rem] transition-colors duration-200 hover:text-white">
+              <a
+                href="mailto:contato@simplemanager.com"
+                className="text-white/80 no-underline text-sm transition-colors duration-200 hover:text-white"
+              >
                 contato@simplemanager.com
               </a>
             </li>
@@ -83,10 +77,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Rodapé inferior */}
-      <div className="max-w-[1140px] mx-auto flex flex-wrap justify-between items-center gap-2 py-5 text-[0.82rem] text-white/35">
+      <div className="max-w-285 mx-auto flex flex-wrap justify-between items-center gap-2 py-3 text-sm text-white/60">
         <p>© {currentYear} Simple Manager — Todos os direitos reservados.</p>
-        <p className="text-[0.78rem]">Desenvolvido por Kaliel, Matheus e Guilherme • Turma 1TDSPB</p>
+        <p className="text-xs">Desenvolvido por Kaliel, Matheus e Guilherme • Turma 1TDSPB</p>
       </div>
     </footer>
   );

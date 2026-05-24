@@ -12,11 +12,20 @@ export function Layout() {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-brand-bg text-brand-text font-sans">
-      <Header />
-      <div className="flex-1">
+    <div className="flex flex-col min-h-screen bg-brand-bg text-brand-text font-sans selection:bg-primary selection:text-white">
+      {/* Header com z-index alto para ficar sempre visível sobre os gradientes das páginas */}
+      <header className="sticky top-0 z-50">
+        <Header />
+      </header>
+
+      {/* flex-1 garante que o conteúdo empurre o footer para baixo.
+        O relative permite que overlays de páginas (como o do Login) 
+        se posicionem corretamente dentro do fluxo.
+      */}
+      <main className="flex-1 relative z-10">
         <Outlet />
-      </div>
+      </main>
+
       <Footer />
     </div>
   );

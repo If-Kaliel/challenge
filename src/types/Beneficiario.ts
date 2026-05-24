@@ -4,7 +4,7 @@ export type Beneficiario = {
   nome: string;
   dtNascimento?: string;
   endereco?: string;
-  // campos opcionais usados apenas no formulário (o back ignora)
+  // campos opcionais usados apenas no formulario (ignorados pelo back)
   cpf?: string;
   nascimento?: string;
   telefone?: string;

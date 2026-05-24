@@ -1,99 +1,117 @@
-import { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import logoTexto from '../img/logo_nome.png';
+import { useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import type { NavItem } from '../types';
+import { useAuth } from '../context/AuthContext';
 
-const navLinks = [
-  { to: '/',        label: 'Início',  end: true  },
-  { to: '/equipe',  label: 'Equipe',  end: false },
-  { to: '/sobre',   label: 'Sobre',   end: false },
-  { to: '/faq',     label: 'FAQ',     end: false },
-  { to: '/contato', label: 'Contato', end: false },
-  { to: '/solucao', label: 'Solução', end: false },
+const ALL_NAV_LINKS: (NavItem & { roles?: string[] })[] = [
+  { to: '/',              label: 'Início',          end: true,  isPublic: true  },
+  { to: '/premios',       label: 'Prêmios',         end: false, isPublic: true  },
+  { to: '/noticias',      label: 'Notícias',        end: false, isPublic: true  },
+  { to: '/faq',           label: 'FAQ',             end: false, isPublic: true  },
+  { to: '/contato',       label: 'Contato',         end: false, isPublic: true  },
+  // Sistema — visibilidade por papel
+  { to: '/dashboard',     label: 'Dashboard',       end: false, isPublic: false },
+  { to: '/colaboradores', label: 'Colaboradores',   end: false, isPublic: false, roles: ['admin'] },
+  { to: '/dentistas',     label: 'Dentistas',       end: false, isPublic: false, roles: ['admin', 'funcionario'] },
+  { to: '/beneficiarios', label: 'Beneficiários',   end: false, isPublic: false, roles: ['admin', 'funcionario', 'dentista'] },
+  { to: '/doacoes',       label: 'Doações',         end: false, isPublic: false, roles: ['admin', 'funcionario'] },
 ];
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navRef = useRef<HTMLElement | null>(null);
-  const menuId = 'main-navigation';
-
-  useEffect(() => {
-    if (!menuOpen) {
-      return;
-    }
-
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setMenuOpen(false);
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-    const firstLink = navRef.current?.querySelector('a');
-    firstLink?.focus();
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [menuOpen]);
-
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const closeMenu = () => setMenuOpen(false);
+  const { usuario, logout } = useAuth();
+
+  const PAPEL_LABEL: Record<string, string> = {
+    admin:       '👑 Admin',
+    funcionario: '💼 Func',
+    dentista:    '🦷 Dentista',
+  };
+
+  const systemRoutes = ['/dashboard', '/colaboradores', '/beneficiarios', '/dentistas', '/doacoes'];
+  const isSystemArea = systemRoutes.some((r) => pathname.startsWith(r));
+
+  const filteredLinks = ALL_NAV_LINKS.filter((link) => {
+    // Sempre mostra Início e Prêmios
+    if (link.to === '/premios' || link.to === '/') return true;
+
+    if (!isSystemArea) return link.isPublic === true;
+
+    // Área de sistema: só links privados
+    if (link.isPublic !== false) return false;
+
+    // Se tem restricão de papel, valida
+    if (link.roles && usuario) {
+      return link.roles.includes(usuario.papel);
+    }
+    if (link.roles && !usuario) return false;
+
+    return true;
+  });
+
+  const handleLogout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    logout();
+    closeMenu();
+    navigate('/');
+  };
 
   return (
-    <header className="bg-header-gradient sticky top-0 z-[100] flex items-center justify-between px-6 md:px-10 py-3.5 shadow-[0_4px_24px_rgba(79,70,229,0.25)] border-b border-white/[0.06] min-h-[60px]">
+    <header className="bg-header-gradient sticky top-0 z-50 flex items-center justify-between px-6 sm:px-10 py-3 shadow-sm border-b border-white/10">
+      <div className="flex items-center gap-3">
+        <span className="font-extrabold text-xl text-accent tracking-tight">SM</span>
 
-      {/* Brand / Logo */}
-      <div className="bg-white/12 rounded-xl px-2.5 py-1.5 shadow-[0_6px_18px_rgba(0,0,0,0.2)] backdrop-blur-sm">
-        <img
-          src={logoTexto}
-          alt="Simple Manager"
-          loading="eager"
-          decoding="async"
-          className="h-11 md:h-12 w-auto shrink-0 select-none"
-        />
+        {isSystemArea && (
+          <span className="text-[10px] bg-accent/20 text-accent px-2 py-0.5 rounded font-bold uppercase tracking-widest hidden sm:block">
+            Painel Administrativo
+          </span>
+        )}
+
+        <span className="text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-widest bg-slate-800/50 border border-slate-700/50 flex items-center gap-1.5 ml-2">
+          {usuario ? (
+            <><div className="w-1.5 h-1.5 rounded-full bg-green-400" /> <span className="text-green-400">{PAPEL_LABEL[usuario.papel] ?? usuario.nome}</span></>
+          ) : (
+            <><div className="w-1.5 h-1.5 rounded-full bg-slate-400" /> <span className="text-slate-400">Offline</span></>
+          )}
+        </span>
       </div>
 
-      {/* Hamburger — visível abaixo de 992px (desktop) */}
       <button
-        className="flex desktop:hidden items-center justify-center w-10 h-10 rounded-lg bg-transparent border-2 border-white/30 text-white text-lg cursor-pointer transition-all duration-200 hover:bg-white/10 hover:border-accent hover:text-accent"
-        aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
-        aria-controls={menuId}
-        aria-expanded={menuOpen}
+        className="desktop:hidden p-2 text-white border border-white/30 rounded"
         onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Abrir menu"
       >
         ☰
       </button>
 
-      {/* Navegação */}
-      <nav
-        id={menuId}
-        ref={navRef}
-        role="navigation"
-        aria-label="Menu principal"
-        className={
-          menuOpen
-            ? 'flex flex-col fixed top-[60px] left-0 right-0 bg-gradient-to-b from-[#0f0f1a] to-[#1e1b4b] px-2.5 py-3 gap-1 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-b border-white/[0.06] z-[99]'
-            : 'hidden desktop:flex gap-1 items-center'
-        }
-      >
-        {navLinks.map(({ to, label, end }) => (
+      <nav className={`${menuOpen ? 'flex flex-col fixed top-16 left-0 right-0 bg-slate-900 p-4' : 'hidden desktop:flex'} gap-2 items-center`}>
+        {filteredLinks.map(({ to, label, end }) => (
           <NavLink
             key={to}
             to={to}
             end={end}
             onClick={closeMenu}
             className={({ isActive }) =>
-              [
-                'text-[0.9rem] font-medium px-4 py-[7px] rounded-lg transition-all duration-200 no-underline',
-                'desktop:inline block w-full desktop:w-auto text-left',
-                isActive
-                  ? 'bg-primary text-white shadow-[0_2px_12px_rgba(79,70,229,0.4)]'
-                  : 'text-white/75 hover:bg-white/10 hover:text-white',
-              ].join(' ')
+              `text-sm font-medium px-3 py-1 rounded transition-all ${
+                isActive ? 'bg-primary text-white shadow-lg' : 'text-white/80 hover:text-white'
+              }`
             }
           >
             {label}
           </NavLink>
         ))}
+
+        {!usuario ? (
+          <NavLink to="/login" onClick={closeMenu} className="ml-2 bg-accent text-slate-900 px-4 py-1 rounded text-sm font-black hover:scale-105 transition-transform">
+            ACESSAR
+          </NavLink>
+        ) : (
+          <button onClick={handleLogout} className="ml-2 text-red-400 text-xs font-bold hover:text-white transition-colors cursor-pointer uppercase">
+            Sair do Sistema
+          </button>
+        )}
       </nav>
     </header>
   );

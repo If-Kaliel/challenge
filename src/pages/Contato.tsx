@@ -1,209 +1,118 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import type { SubmitHandler } from 'react-hook-form';
-import type { FormStatus } from '../types';
-import { Button } from '../components';
+import React, { useState, useEffect } from 'react';
 
-interface ContatoFormData {
-  nome: string;
-  email: string;
-  mensagem: string;
-}
+export const Contato: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
-type MensagemSalva = ContatoFormData & { data: string };
+  // Efeito para limpar o alerta após 5 segundos
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => setStatus(null), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
-export function Contato() {
-  const navigate = useNavigate();
-  const [status, setStatus] = useState<FormStatus>({ type: null, text: '' });
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ContatoFormData>();
+    const form = e.target as HTMLFormElement;
+    const data = {
+      nome: (form.elements.namedItem('nome') as HTMLInputElement).value,
+      email: (form.elements.namedItem('email') as HTMLInputElement).value,
+      mensagem: (form.elements.namedItem('mensagem') as HTMLTextAreaElement).value,
+    };
 
-  const getMensagensSalvas = (): MensagemSalva[] => {
     try {
-      const raw = localStorage.getItem('mensagens');
-      if (!raw) {
-        return [];
+      const response = await fetch((import.meta.env.VITE_API_URL || 'http://localhost:8080') + '/contato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus({ type: 'success', message: 'Mensagem enviada com sucesso! Nossa equipe entrará em contato.' });
+        form.reset();
+      } else {
+        setStatus({ type: 'error', message: 'Erro ao enviar mensagem. Tente novamente mais tarde.' });
       }
-
-      const parsed = JSON.parse(raw);
-      return Array.isArray(parsed) ? parsed : [];
-    } catch {
-      return [];
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Erro de conexão com o servidor.' });
+    } finally {
+      setLoading(false);
     }
   };
-
-  const onSubmit: SubmitHandler<ContatoFormData> = async (data) => {
-    try {
-      const payload = {
-        nome: data.nome.trim(),
-        email: data.email.trim().toLowerCase(),
-        mensagem: data.mensagem.trim(),
-      };
-
-      const res = await fetch(
-        (import.meta.env.VITE_API_URL || 'http://localhost:8080') + '/contato',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        }
-      );
-
-      if (!res.ok) throw new Error('Falha na requisição');
-
-      // Salva também no localStorage como cache local
-      const registros = getMensagensSalvas();
-      registros.push({ ...payload, data: new Date().toLocaleString() });
-      localStorage.setItem('mensagens', JSON.stringify(registros));
-
-      setStatus({ type: 'success', text: '✓ Mensagem enviada! Redirecionando...' });
-      reset();
-      setTimeout(() => navigate('/'), 2000);
-    } catch {
-      setStatus({ type: 'error', text: 'Não foi possível enviar agora. Tente novamente.' });
-    }
-  };
-
-  const inputBase =
-    'w-full px-4 py-3 border-2 border-border rounded-md text-[0.95rem] font-sans text-brand-text bg-[#fafbff] transition-all duration-200 focus:outline-none focus:border-primary focus:shadow-[0_0_0_4px_rgba(79,70,229,0.12)] hover:border-[#c7d2fe]';
 
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
-      <section className="bg-surface rounded-lg p-9 mb-6 shadow-sm border border-border">
-        <h2 className="text-[1.5rem] font-bold text-brand-text mb-2 border-l-4 border-primary pl-3.5">
-          Fale Conosco
-        </h2>
-        <p className="text-muted mb-6">
-          Entre em contato com o time do Simple Manager para suporte técnico, dúvidas comerciais ou solicitação de demonstração.
-        </p>
-
-        <form
-          id="contact-form"
-          aria-label="Formulário de contato"
-          onSubmit={handleSubmit(onSubmit)}
-          className="max-w-[580px] mx-auto"
-        >
-          {/* Nome */}
-          <div className="mb-5">
-            <label htmlFor="name" className="block font-semibold text-[0.9rem] text-brand-text mb-1.5">
-              Nome
-            </label>
-            <input
-              id="name"
-              type="text"
-              placeholder="Seu nome"
-              className={`${inputBase} ${errors.nome ? 'border-red-600' : ''}`}
-              {...register('nome', {
-                required: 'Preencha este campo',
-                minLength: {
-                  value: 2,
-                  message: 'Digite ao menos 2 caracteres',
-                },
-                validate: (value) =>
-                  value.trim().length >= 2 || 'Digite ao menos 2 caracteres',
-              })}
-            />
-            {errors.nome && (
-              <p className="text-red-600 text-[0.82rem] mt-1 font-medium">{errors.nome.message}</p>
-            )}
-          </div>
-
-          {/* E-mail */}
-          <div className="mb-5">
-            <label htmlFor="email" className="block font-semibold text-[0.9rem] text-brand-text mb-1.5">
-              E-mail
-            </label>
-            <input
-              id="email"
-              type="email"
-              placeholder="seu@exemplo.com"
-              className={`${inputBase} ${errors.email ? 'border-red-600' : ''}`}
-              {...register('email', {
-                required: 'Preencha este campo',
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: 'Digite um e-mail válido',
-                },
-              })}
-            />
-            {errors.email && (
-              <p className="text-red-600 text-[0.82rem] mt-1 font-medium">{errors.email.message}</p>
-            )}
-          </div>
-
-          {/* Mensagem */}
-          <div className="mb-5">
-            <label htmlFor="message" className="block font-semibold text-[0.9rem] text-brand-text mb-1.5">
-              Mensagem
-            </label>
-            <textarea
-              id="message"
-              rows={4}
-              placeholder="Descreva sua solicitação..."
-              className={`${inputBase} resize-y min-h-[130px] ${errors.mensagem ? 'border-red-600' : ''}`}
-              {...register('mensagem', {
-                required: 'Preencha este campo',
-                minLength: {
-                  value: 10,
-                  message: 'Digite ao menos 10 caracteres',
-                },
-                validate: (value) =>
-                  value.trim().length >= 10 || 'Digite ao menos 10 caracteres',
-              })}
-            />
-            {errors.mensagem && (
-              <p className="text-red-600 text-[0.82rem] mt-1 font-medium">{errors.mensagem.message}</p>
-            )}
-          </div>
-
-          <Button type="submit" fullWidth>Enviar mensagem</Button>
-
-          {status.type && (
-            <div
-              id="contact-status"
-              aria-live="polite"
-              className={`mt-4 px-4 py-3.5 rounded-md text-center font-bold text-[0.95rem] border ${
-                status.type === 'success'
-                  ? 'bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-800 border-emerald-300'
-                  : 'bg-gradient-to-br from-rose-100 to-rose-200 text-rose-800 border-rose-300'
-              }`}
-            >
-              {status.text}
-            </div>
-          )}
-        </form>
-
-        {/* Redes sociais */}
-        <div className="mt-8 pt-6 border-t border-border">
-          <h3 className="text-[0.9rem] font-bold uppercase tracking-[0.08em] text-muted mb-3.5">
-            Redes Sociais
-          </h3>
-          <ul aria-label="Redes sociais" className="list-none p-0 flex gap-2.5 flex-wrap">
-            {[
-              { href: 'https://www.facebook.com',  label: 'Facebook'  },
-              { href: 'https://www.instagram.com', label: 'Instagram' },
-              { href: 'https://www.linkedin.com',  label: 'LinkedIn'  },
-            ].map(({ href, label }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-5 py-2 border-2 border-border rounded-full text-primary font-semibold text-[0.88rem] bg-surface no-underline transition-all duration-200 hover:bg-btn-gradient hover:text-white hover:border-transparent hover:shadow-md hover:-translate-y-0.5"
-                >
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
+    <div className="min-h-screen bg-slate-50 py-12 px-6">
+      <div className="max-w-[1000px] w-full mx-auto">
+        
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-blue-100 text-blue-600 font-bold text-xs uppercase tracking-widest mb-4">
+            Suporte Técnico
+          </span>
+          <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-4">
+            Como podemos te ajudar?
+          </h1>
+          <p className="text-slate-500 max-w-lg mx-auto">
+            Nossa equipe de especialistas está pronta para analisar sua clínica e resolver qualquer desafio tecnológico.
+          </p>
         </div>
-      </section>
+
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          
+          <div className="space-y-6">
+            <h3 className="text-xl font-black text-slate-900 mb-6">Canais Diretos</h3>
+            {[
+              { title: 'E-mail de Suporte', val: 'suporte@simplemanager.com' },
+              { title: 'Central de Atendimento', val: '+55 (11) 4002-8922' },
+              { title: 'Sede em São Paulo', val: 'Rua Maurício Francisco Klabin, 449 | CEP: 04120-020' },
+            ].map((item) => (
+              <div key={item.title} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-xl shadow-slate-200/40 flex items-center gap-5 transition-transform hover:scale-[1.02]">
+                <div className="bg-blue-50 w-14 h-14 rounded-2xl flex items-center justify-center text-2xl" />
+                <div>
+                  <strong className="block text-slate-900 text-sm">{item.title}</strong>
+                  <span className="text-slate-500 text-sm font-medium">{item.val}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100">
+            <h3 className="text-xl font-black text-slate-900 mb-6">Envie uma mensagem</h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              
+              {/* Bloco de Feedback (Sucesso ou Erro) */}
+              {status && (
+                <div className={`p-4 rounded-2xl text-sm font-bold animate-in fade-in slide-in-from-top-2 ${status.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+                  {status.message}
+                </div>
+              )}
+
+              <div>
+                <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Seu Nome</label>
+                <input name="nome" type="text" placeholder="Como podemos te chamar?" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all text-sm font-medium text-slate-900" required />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Seu E-mail</label>
+                <input name="email" type="email" placeholder="exemplo@clinica.com" className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all text-sm font-medium text-slate-900" required />
+              </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-500 mb-1.5 uppercase tracking-wider">Sua Mensagem</label>
+                <textarea name="mensagem" placeholder="Conte-nos o que você precisa..." rows={4} className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 outline-none transition-all text-sm font-medium text-slate-900 resize-none" required></textarea>
+              </div>
+              <button 
+                type="submit" 
+                disabled={loading}
+                className="w-full py-4 bg-slate-950 text-white font-black rounded-2xl shadow-lg shadow-slate-900/20 hover:bg-blue-600 transition-all active:scale-[0.98] disabled:opacity-50"
+              >
+                {loading ? 'Enviando...' : 'Enviar Mensagem'}
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
-}
+};

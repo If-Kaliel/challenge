@@ -1,68 +1,69 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components';
-import { Home, Equipe, Sobre, FAQ, Contato, Solucao, MembroDetalhe } from './pages';
-import { Cadastro } from './pages/Cadastro';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import {
+  Home,
+  Login,
+  FAQ,
+  Contato,
+  Dashboard,
+  Colaboradores,
+  ColaboradorDetalhe,
+  Beneficiarios,
+  BeneficiarioDetalhe,
+  Noticias,
+  Premios,
+  NotFound,
+  Sobre,
+  Equipe,
+} from './pages';
+import { Dentistas } from './pages/Dentistas';
+import { DentistaDetalhe } from './pages/DentistaDetalhe';
+import { Doacoes } from './pages/Doacoes';
+import { DoacaoDetalhe } from './pages/DoacaoDetalhe';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* Rotas estáticas */}
-          <Route index element={<Home />} />
-          <Route path="equipe" element={<Equipe />} />
-          <Route path="sobre" element={<Sobre />} />
-          <Route path="faq" element={<FAQ />} />
-          <Route path="contato" element={<Contato />} />
-          <Route path="solucao" element={<Solucao />} />
-          <Route path="cadastro" element={<Cadastro />} />
-          <Route path="equipe/:id" element={<MembroDetalhe />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            {/* ── Rotas Públicas ── */}
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="sobre" element={<Sobre />} />
+            <Route path="equipe" element={<Equipe />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="contato" element={<Contato />} />
+            <Route path="noticias" element={<Noticias />} />
+            <Route path="premios" element={<Premios />} />
+
+            {/* ── Rotas Protegidas — qualquer papel logado ── */}
+            <Route path="dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+
+            {/* Beneficiários — admin, funcionário e dentista */}
+            <Route path="beneficiarios" element={<ProtectedRoute allowedRoles={['admin', 'funcionario', 'dentista']}><Beneficiarios /></ProtectedRoute>} />
+            <Route path="beneficiarios/:id" element={<ProtectedRoute allowedRoles={['admin', 'funcionario', 'dentista']}><BeneficiarioDetalhe /></ProtectedRoute>} />
+
+            {/* Colaboradores — apenas admin */}
+            <Route path="colaboradores" element={<ProtectedRoute allowedRoles={['admin']}><Colaboradores /></ProtectedRoute>} />
+            <Route path="colaboradores/:id" element={<ProtectedRoute allowedRoles={['admin']}><ColaboradorDetalhe /></ProtectedRoute>} />
+
+            {/* Dentistas — admin e funcionário */}
+            <Route path="dentistas" element={<ProtectedRoute allowedRoles={['admin', 'funcionario']}><Dentistas /></ProtectedRoute>} />
+            <Route path="dentistas/:id" element={<ProtectedRoute allowedRoles={['admin', 'funcionario']}><DentistaDetalhe /></ProtectedRoute>} />
+
+            {/* Doações — admin e funcionário */}
+            <Route path="doacoes" element={<ProtectedRoute allowedRoles={['admin', 'funcionario']}><Doacoes /></ProtectedRoute>} />
+            <Route path="doacoes/:id" element={<ProtectedRoute allowedRoles={['admin', 'funcionario']}><DoacaoDetalhe /></ProtectedRoute>} />
+          </Route>
+
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
 export default App;
-
-{/* Kaliel: Rodei validações no terminal para garantir que o TypeScript não acorde de mau humor na maquina do Ale.
-  --------------------------------------------------------------------------------------------
-  kaliel@Pc MINGW64 ~/VSCodeProjects/challenge (Kaliel)
-$ npx tsc --noEmit
-
-kaliel@Pc MINGW64 ~/VSCodeProjects/challenge (Kaliel)
-$ npm run lint
-
-> sm-app@0.0.0 lint
-> eslint .
-
-
-kaliel@Pc MINGW64 ~/VSCodeProjects/challenge (Kaliel)
-$ npm run build
-
-> sm-app@0.0.0 build
-> tsc -b && vite build
-
-vite v8.0.7 building client environment for production...
-✓ 47 modules transformed.
-computing gzip size...
-dist/index.html                            0.94 kB │ gzip:  0.51 kB
-dist/assets/Produtividade-2FlofHRw.jpg    22.98 kB
-dist/assets/Kaliel-BuHz6tJR.jpg           78.58 kB
-dist/assets/Matheus Maciel-CzIIAFRg.jpg   86.07 kB
-dist/assets/Guilherme-SrIraq26.jpg       171.31 kB
-dist/assets/logo_nome-DHKdp_wY.png       277.26 kB
-dist/assets/tdb1-BsVOlqNW.jpg            321.59 kB
-dist/assets/index-DSoYUb8Z.css            25.07 kB │ gzip:  5.48 kB
-dist/assets/index-DmM90snk.js            291.22 kB │ gzip: 92.47 kB
-
-✓ built in 636ms
-
-kaliel@Pc MINGW64 ~/VSCodeProjects/challenge (Kaliel)
-$ */}
-
-/* LOG DE ESTABILIDADE:
-  [X] npx tsc --noEmit (Tipagem blindada)
-  [X] npm run lint (Código limpo)
-  [X] npm run build (Buoild sem erros)
-*/

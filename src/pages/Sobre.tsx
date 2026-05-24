@@ -1,99 +1,113 @@
-import produtividadeImg from '../img/Produtividade.jpg';
-import { Card } from '../components';
+import { Link } from 'react-router-dom';
+import fotoCriancasImg from '../assets/img/criancas.jpg';
 
 export function Sobre() {
-
   return (
-    <div className="max-w-[1140px] w-full mx-auto my-8 md:my-12 px-4 md:px-7">
-
-      {/* Hero */}
-      <div className="relative overflow-hidden flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-hero-gradient rounded-[20px] px-6 py-10 md:px-12 md:py-14 mb-7 text-white">
-        <div className="pointer-events-none absolute inset-0"
-          style={{ background: 'radial-gradient(circle at 10% 50%, rgba(139,92,246,0.3) 0%, transparent 50%), radial-gradient(circle at 90% 20%, rgba(6,182,212,0.2) 0%, transparent 50%)' }}
-        />
-        <div className="flex-1 relative z-10">
-          <span className="inline-block bg-accent/15 text-accent border border-accent/35 rounded-full px-4 py-1 text-[0.8rem] font-semibold uppercase tracking-[0.06em] mb-4">
-            Sobre nós
+    <div className="min-h-screen bg-white text-slate-900 antialiased">
+      <section className="relative overflow-hidden bg-gradient-to-tr from-white via-blue-50/30 to-cyan-50/20 pt-16 pb-20 border-b border-slate-100">
+        <div className="absolute inset-0 opacity-60 pointer-events-none">
+          <div className="absolute -top-40 -left-20 w-[500px] h-[500px] rounded-full bg-cyan-200/30 blur-3xl" />
+        </div>
+        <div className="max-w-[1240px] mx-auto px-6 relative z-10 text-center">
+          <span className="inline-block text-blue-600 font-bold uppercase tracking-widest text-xs mb-3">
+            Sobre o projeto
           </span>
-          <h1 className="text-[2.4rem] font-extrabold leading-tight mb-4">
-            Gestão de equipes <br />
-            <span style={{ background: 'linear-gradient(90deg, #06b6d4, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              simples e eficiente
-            </span>
-          </h1>
-          <p className="text-white/75 text-[1.05rem] leading-[1.7] max-w-[480px]">
-            O Simple Manager nasceu da necessidade de centralizar e simplificar os processos de RH, colocando gestores e colaboradores em sintonia com poucos cliques.
+          <h1 className="text-5xl font-black text-slate-900 tracking-tight mb-4">Simple Manager</h1>
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            Uma plataforma de gestão odontológica integrada, desenvolvida por estudantes da FIAP como projeto acadêmico de fim de semestre.
           </p>
         </div>
-        <div className="shrink-0 w-full md:w-[340px] relative z-10">
-          <img src={produtividadeImg} alt="Interface do Simple Manager"
-            loading="eager"
-            decoding="async"
-            className="w-full rounded-2xl object-cover shadow-[0_20px_60px_rgba(0,0,0,0.45)] border border-white/10 transition-transform duration-300 hover:scale-[1.02]"
-          />
-        </div>
-      </div>
+      </section>
 
-      {/* Estatísticas */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-7">
-        {[
-          { number: '+500', label: 'Empresas atendidas' },
-          { number: '98%',  label: 'Satisfação dos clientes' },
-          { number: '24/7', label: 'Suporte disponível' },
-          { number: '100%', label: 'Online e seguro' },
-        ].map(({ number, label }) => (
-          <Card key={label} variant="stat">
-            <span className="block text-[2rem] font-extrabold mb-1.5"
-              style={{ background: 'linear-gradient(135deg,#4f46e5,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              {number}
-            </span>
-            <span className="block text-[0.82rem] text-muted font-medium uppercase tracking-[0.05em]">{label}</span>
-          </Card>
-        ))}
-      </div>
+      <section className="max-w-[1240px] mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-6">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-xs block">Nossa Missão</span>
+            <h2 className="text-4xl font-black text-slate-900 tracking-tight">
+              Mais do que organizar processos, geramos impacto social.
+            </h2>
+            <p className="text-slate-600 leading-relaxed">
+              O Simple Manager elimina o gargalo burocrático e integra a gestão clínica e social, junto da conexão humanizada no atendimento.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              Desenvolvido com React, TypeScript e conectado a uma API Java com banco Oracle, o sistema gerencia colaboradores, dentistas, beneficiários e doações com controle granular de permissões por papel.
+            </p>
 
-      {/* Missão */}
-      <div className="bg-surface rounded-lg p-9 mb-6 shadow-sm border border-border flex flex-col md:flex-row gap-10 items-start">
-        <div className="flex-1">
-          <h2 className="text-[1.5rem] font-bold text-brand-text mb-5 border-l-4 border-primary pl-3.5">Nossa Missão</h2>
-          <p className="text-muted leading-[1.8] mb-3.5">Transformar a gestão de pessoas em uma experiência intuitiva, acessível e estratégica para empresas de todos os tamanhos.</p>
-          <p className="text-muted leading-[1.8]">Acreditamos que boas ferramentas liberam o potencial das equipes — por isso desenvolvemos o Simple Manager com foco em usabilidade, segurança e resultados reais.</p>
-        </div>
-        <div className="flex-1 flex flex-col gap-4">
-          {[
-            { icon: '🎯', title: 'Foco em resultados',         desc: 'Cada funcionalidade foi pensada para gerar impacto direto na produtividade.' },
-            { icon: '🔒', title: 'Segurança em primeiro lugar', desc: 'Dados criptografados e armazenados com os mais altos padrões de proteção.' },
-            { icon: '⚡', title: 'Simplicidade e agilidade',   desc: 'Interface intuitiva para que qualquer pessoa possa usar sem treinamento.' },
-          ].map(({ icon, title, desc }) => (
-            <div key={title} className="flex gap-3.5 items-start p-4 bg-feature-gradient rounded-xl border border-border transition-transform duration-200 hover:translate-x-1 hover:shadow-sm">
-              <span className="text-2xl leading-none shrink-0">{icon}</span>
-              <div>
-                <strong className="block text-[0.95rem] font-bold text-brand-text mb-1">{title}</strong>
-                <p className="text-[0.85rem] text-muted leading-snug m-0">{desc}</p>
-              </div>
+            <div className="grid grid-cols-1 gap-4 pt-2">
+              {[
+                { title: 'Foco em resultados técnicos', desc: 'Funcionalidades desenhadas para mitigar a perda de tempo na gestão.' },
+                { title: 'Segurança e conformidade LGPD', desc: 'Controle de acesso granular por papel: Admin, Funcionário e Dentista.' },
+                { title: 'Simplicidade operacional', desc: 'Interface limpa e de rápida adoção para toda a equipe médica.' },
+              ].map((item) => (
+                <div key={item.title} className="flex gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50/50">
+                  <span className="text-2xl shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-sm">{item.title}</h4>
+                    <p className="text-xs text-slate-500 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
 
-      {/* Funções principais */}
-      <div className="bg-surface rounded-lg p-9 mb-6 shadow-sm border border-border">
-        <h2 className="text-[1.5rem] font-bold text-brand-text mb-5 border-l-4 border-primary pl-3.5">Funções Principais</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
-          {[
-            { icon: '👥', title: 'Gestão de Colaboradores',      desc: 'Cadastro completo, histórico de cargos e controle de dados de cada membro da equipe.' },
-            { icon: '📊', title: 'Controle de Produtividade',    desc: 'Acompanhe indicadores de desempenho e gere relatórios personalizados em tempo real.' },
-            { icon: '🗓️', title: 'Gestão de Férias e Licenças', desc: 'Controle de afastamentos, solicitações e calendário integrado por departamento.' },
-            { icon: '📈', title: 'Relatórios e Insights',        desc: 'Visualizações gráficas e exportação em PDF e CSV para tomada de decisão estratégica.' },
-          ].map(({ icon, title, desc }) => (
-            <Card key={title} variant="function">
-              <div className="text-2xl mb-3">{icon}</div>
-              <strong className="block text-base font-bold text-brand-text mb-2">{title}</strong>
-              <p className="text-[0.88rem] text-muted leading-relaxed m-0">{desc}</p>
-            </Card>
-          ))}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent rounded-3xl transform translate-x-3 translate-y-3 pointer-events-none" />
+            <img
+              src={fotoCriancasImg}
+              alt="Ação preventiva com crianças"
+              className="rounded-3xl shadow-xl w-full object-cover aspect-[4/3] relative z-10 border border-slate-100"
+            />
+            <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl z-20 border border-slate-100 hidden sm:block max-w-xs">
+              <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                <strong className="text-slate-900 font-bold block mb-1">Ações Preventivas Coletivas</strong>
+                Apoiamos clínicas a organizarem mutirões de triagem e orientação de higiene bucal infantil.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section className="bg-slate-50 py-16 border-y border-slate-100">
+        <div className="max-w-[1240px] mx-auto px-6">
+          <div className="mb-10">
+            <span className="text-blue-600 font-bold uppercase tracking-widest text-xs block mb-1">Stack Técnica</span>
+            <h2 className="text-3xl font-black text-slate-900 tracking-tight">Tecnologias utilizadas</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { label: 'React 19', desc: 'Interface moderna com hooks' },
+              { label: 'TypeScript', desc: 'Tipagem estática e segura' },
+              { label: 'Vite 8', desc: 'Build ultrarrápido' },
+              { label: 'Java + Oracle', desc: 'API backend robusta' },
+            ].map((tech) => (
+              <div key={tech.label} className="bg-white p-5 rounded-2xl border border-slate-200/60 shadow-sm text-center">
+                <span className="text-3xl block mb-3" />
+                <h3 className="font-bold text-slate-900 text-sm mb-1">{tech.label}</h3>
+                <p className="text-xs text-slate-500">{tech.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-[1240px] mx-auto px-6 py-16">
+        <div className="bg-slate-950 text-white p-12 md:p-16 rounded-[3rem] text-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 space-y-5">
+            <h2 className="text-3xl font-black tracking-tight">Conheça o sistema</h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/login" className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold text-base transition-all active:scale-95 shadow-lg">
+                Acessar o sistema
+              </Link>
+              <Link to="/equipe" className="inline-block bg-white/10 hover:bg-white/20 text-white px-10 py-4 rounded-xl font-bold text-base transition-all border border-white/20">
+                Conhecer a equipe
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
+export default Sobre;
