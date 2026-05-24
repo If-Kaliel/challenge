@@ -1,7 +1,8 @@
 export interface Triagem {
   id: string;
-  idBeneficiario: string; // Chave estrangeira
-  dtTriagem: string;      // LocalDate
-  necessidade: string;
-  prioridade: string;
+  idDentista: string;
+  idBeneficiario: string;
+  dtHr: string;
+  dsPrioridade: string;
+  dsLocal: string;
 }

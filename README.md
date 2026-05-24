@@ -54,11 +54,22 @@ challenge/
 ├── src/
 │   ├── assets/
 │   │   └── img/                   # Imagens do projeto
+│   │       ├── atendimento.jpg    # Imagem de atendimento da Home
+│   │       ├── brasilia.jpg       # Imagem da seção Notícias
+│   │       ├── carrefour.jpg      # Prêmio Carrefour
+│   │       ├── criancas.jpg       # Imagem da seção Sobre
+│   │       ├── crunchyroll.png    # Prêmio Crunchyroll
+│   │       ├── foto-equipe.jpg    # Imagem de apoio da Home
 │   │       ├── Guilherme.jpg      # Foto do integrante Guilherme
 │   │       ├── Kaliel.jpg         # Foto do integrante Kaliel
 │   │       ├── MatheuxMaciel.jpg  # Foto do integrante Matheus
-│   │       ├── Produtividade.jpg  # Imagem da seção Sobre
-│   │       └── tdb1.jpg           # Imagem hero da Home
+│   │       ├── netflix.png        # Prêmio Netflix
+│   │       ├── noticia.jpg        # Imagem da seção Notícias
+│   │       ├── prime.png          # Prêmio Amazon Prime
+│   │       ├── Produtividade.jpg  # Imagem hero da Home/Sobre
+│   │       ├── tdb1.jpg           # Imagem hero da Home
+│   │       ├── update.jpg         # Imagem de atualização da seção Notícias
+│   │       └── voucher-milk.jpg   # Prêmio Love Milk
 │   ├── components/
 │   │   ├── Button.tsx             # Botão reutilizável (primary | outline | ghost)
 │   │   ├── Card.tsx               # Card reutilizável (feature | stat | function)
@@ -70,15 +81,25 @@ challenge/
 │   │   ├── useColaboradores.ts    # Hook: fetch + create com loading/error states
 │   │   └── index.ts               # Barrel exports dos hooks
 │   ├── pages/
-│   │   ├── Colaboradores.tsx      # Lista e cadastro de colaboradores (API Java)
-│   │   ├── Contato.tsx            # Formulário de contato (React Hook Form)
-│   │   ├── Dashboard.tsx          # Dashboard de RH com KPIs e métricas
-│   │   ├── Equipe.tsx             # Integrantes do projeto (foto, RM, GitHub, LinkedIn)
-│   │   ├── FAQ.tsx                # Perguntas frequentes (accordion)
-│   │   ├── Home.tsx               # Página inicial com hero e features
-│   │   ├── MembroDetalhe.tsx      # Perfil detalhado do integrante (rota dinâmica :id)
-│   │   ├── Sobre.tsx              # Sobre o sistema e a equipe
-│   │   ├── Solucao.tsx            # Apresentação da solução proposta
+│   │   ├── Beneficiarios.tsx       # Lista e cadastro de beneficiários
+│   │   ├── BeneficiarioDetalhe.tsx # Detalhe/edição de beneficiário (:id)
+│   │   ├── Colaboradores.tsx       # Lista e cadastro de colaboradores (API Java)
+│   │   ├── ColaboradorDetalhe.tsx  # Detalhe/edição de colaborador (:id)
+│   │   ├── Contato.tsx             # Formulário de contato
+│   │   ├── Dashboard.tsx           # Dashboard com KPIs e métricas
+│   │   ├── Dentistas.tsx           # Lista e cadastro de dentistas
+│   │   ├── DentistaDetalhe.tsx     # Detalhe/edição de dentista (:id)
+│   │   ├── Doacoes.tsx             # Lista e cadastro de doações
+│   │   ├── DoacaoDetalhe.tsx       # Detalhe/edição de doação (:id)
+│   │   ├── Equipe.tsx              # Integrantes do projeto (foto, RM, GitHub, LinkedIn)
+│   │   ├── FAQ.tsx                 # Perguntas frequentes (accordion)
+│   │   ├── Home.tsx                # Página inicial com hero e features
+│   │   ├── Login.tsx               # Tela de autenticação por papel
+│   │   ├── MembroDetalhe.tsx       # Perfil detalhado do integrante (rota interna)
+│   │   ├── Noticias.tsx            # Notícias e atualizações do projeto
+│   │   ├── NotFound.tsx            # Página 404 com redirecionamento
+│   │   ├── Premios.tsx             # Catálogo de prêmios protegido por login
+│   │   └── Sobre.tsx               # Sobre o sistema e a equipe
 │   │   └── index.ts               # Barrel exports das páginas
 │   ├── services/
 │   │   ├── api.ts                 # Cliente HTTP base (fetch + ApiError)
@@ -106,15 +127,24 @@ challenge/
 
 | Rota | Página | Tipo |
 |---|---|---|
-| `/` | Home — Página inicial | Obrigatória |
-| `/equipe` | Integrantes do grupo | Obrigatória |
-| `/sobre` | Sobre o sistema | Obrigatória |
-| `/faq` | Perguntas Frequentes | Obrigatória |
-| `/contato` | Formulário de contato | Obrigatória |
-| `/dashboard` | Dashboard de RH — KPIs e métricas | Solução |
-| `/colaboradores` | Gestão de colaboradores (API Java) | Solução |
-| `/solucao` | Apresentação da solução proposta | Solução |
-| `/equipe/:id` | Perfil detalhado do integrante | Dinâmica |
+| `/` | Home — Página inicial | Pública |
+| `/login` | Acesso ao sistema | Pública |
+| `/sobre` | Sobre o sistema | Pública |
+| `/equipe` | Integrantes do grupo | Pública |
+| `/faq` | Perguntas frequentes | Pública |
+| `/contato` | Formulário de contato | Pública |
+| `/noticias` | Notícias e atualizações | Pública |
+| `/premios` | Catálogo de prêmios | Protegida |
+| `/dashboard` | Dashboard de RH — KPIs e métricas | Protegida |
+| `/beneficiarios` | Gestão de beneficiários | Protegida |
+| `/beneficiarios/:id` | Detalhe do beneficiário | Protegida |
+| `/colaboradores` | Gestão de colaboradores (API Java) | Protegida |
+| `/colaboradores/:id` | Detalhe do colaborador | Protegida |
+| `/dentistas` | Gestão de dentistas | Protegida |
+| `/dentistas/:id` | Detalhe do dentista | Protegida |
+| `/doacoes` | Gestão de doações | Protegida |
+| `/doacoes/:id` | Detalhe da doação | Protegida |
+| `*` | Página 404 | Pública |
 
 ---
 

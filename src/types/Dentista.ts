@@ -3,6 +3,6 @@ export interface Dentista {
   nome: string;
   cro: string;
   especialidade: string;
-  email: string;
-  telefone: string;
+  email?: string;
+  telefone?: string;
 }

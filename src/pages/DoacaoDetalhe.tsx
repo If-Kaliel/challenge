@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext';
 
 type DoacaoEditavel = {
   idDoador: string;
-  valor: string;
+  valorDoacao: string;
   dtDoacao: string;
 };
 
@@ -28,7 +28,7 @@ export function DoacaoDetalhe() {
   const { isAdmin, isFuncionario } = useAuth();
 
   const [doacao, setDoacao] = useState<Doacao | null>(null);
-  const [formData, setFormData] = useState<DoacaoEditavel>({ idDoador: '', valor: '', dtDoacao: '' });
+  const [formData, setFormData] = useState<DoacaoEditavel>({ idDoador: '', valorDoacao: '', dtDoacao: '' });
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -46,7 +46,7 @@ export function DoacaoDetalhe() {
         setDoacao(encontrada);
         setFormData({
           idDoador: encontrada?.idDoador ?? '',
-          valor: String(encontrada?.valor ?? ''),
+          valorDoacao: String(encontrada?.valorDoacao ?? ''),
           dtDoacao: encontrada?.dtDoacao ?? '',
         });
       } catch (err) {
@@ -70,7 +70,7 @@ export function DoacaoDetalhe() {
     try {
       const atualizada = await doacaoService.atualizar(id, {
         idDoador: formData.idDoador.trim(),
-        valor: Number(formData.valor),
+        valorDoacao: Number(formData.valorDoacao),
         dtDoacao: formData.dtDoacao,
       });
       setDoacao(atualizada);
@@ -137,7 +137,7 @@ export function DoacaoDetalhe() {
       <div className="bg-surface rounded-xl border border-border shadow-md overflow-hidden">
         <div className="relative px-8 py-10 text-white text-center bg-gradient-to-br from-emerald-500 to-teal-600">
           <div className="text-[4rem] mb-2"></div>
-          <h1 className="text-[1.8rem] font-extrabold mb-1">{formatarValor(doacao.valor)}</h1>
+          <h1 className="text-[1.8rem] font-extrabold mb-1">{formatarValor(doacao.valorDoacao)}</h1>
           <p className="text-white/90">Doação #{doacao.id} — {formatarData(doacao.dtDoacao)}</p>
         </div>
 
@@ -152,7 +152,7 @@ export function DoacaoDetalhe() {
                 </div>
                 <div>
                   <label htmlFor="edit-valor" className="block text-[0.74rem] font-semibold text-brand-text/60 uppercase tracking-wide mb-1.5">Valor (R$)</label>
-                  <input id="edit-valor" name="valor" type="number" step="0.01" value={formData.valor} onChange={handleChange} className={inputCls} />
+                  <input id="edit-valor" name="valorDoacao" type="number" step="0.01" value={formData.valorDoacao} onChange={handleChange} className={inputCls} />
                 </div>
                 <div>
                   <label htmlFor="edit-data" className="block text-[0.74rem] font-semibold text-brand-text/60 uppercase tracking-wide mb-1.5">Data</label>
@@ -165,7 +165,7 @@ export function DoacaoDetalhe() {
                 {[
                   { label: 'ID', value: `#${doacao.id}` },
                   { label: 'Doador (ID)', value: doacao.idDoador },
-                  { label: 'Valor', value: formatarValor(doacao.valor) },
+                  { label: 'Valor', value: formatarValor(doacao.valorDoacao) },
                   { label: 'Data', value: formatarData(doacao.dtDoacao) },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex flex-col gap-0.5">

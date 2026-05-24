@@ -21,17 +21,25 @@ export const doacaoService = {
   buscarPorId: async (id: string): Promise<Doacao> => {
     const response = await api.get<Doacao>(`/doacoes/${id}`);
     const doacao = unwrapResponse<Doacao | Doacao[]>(response);
-    if (!doacao) throw new Error(`Doação com id ${id} não encontrada.`);
+    if (!doacao) throw new Error(`Doacao com id ${id} nao encontrada.`);
     return Array.isArray(doacao) ? doacao[0] : doacao;
   },
 
   criar: async (dados: Omit<Doacao, 'id'>): Promise<Doacao | void> => {
-    const res = await api.post<Doacao>('/doacoes', dados);
+    // Mapeia corretamente para o campo esperado pelo back-end Java
+    const payload = {
+      idDoador: dados.idDoador,
+      valorDoacao: dados.valorDoacao,
+      dtDoacao: dados.dtDoacao,
+      formaPagamento: dados.formaPagamento ?? '',
+      periodicidadePagamento: dados.periodicidadePagamento ?? '',
+    };
+    const res = await api.post<Doacao>('/doacoes', payload);
     const criada = (res as Doacao) || undefined;
     registrarAtividade({
       tipo: 'cadastro',
       entidade: 'colaborador',
-      descricao: `Doação de R$ ${Number(dados.valor).toFixed(2)} registrada no sistema`,
+      descricao: `Doacao de R$ ${Number(dados.valorDoacao).toFixed(2)} registrada no sistema`,
     });
     return criada;
   },
@@ -39,14 +47,12 @@ export const doacaoService = {
   atualizar: async (id: string, dados: Partial<Doacao>): Promise<Doacao> => {
     const response = await api.put<Doacao>(`/doacoes/${id}`, dados);
     const doacao = unwrapResponse<Doacao | Doacao[]>(response);
-    if (!doacao) throw new Error(`Falha ao atualizar doação ${id}.`);
-
+    if (!doacao) throw new Error(`Falha ao atualizar doacao ${id}.`);
     registrarAtividade({
       tipo: 'atualizacao',
       entidade: 'colaborador',
-      descricao: `Doação ID ${id} atualizada`,
+      descricao: `Doacao ID ${id} atualizada`,
     });
-
     return Array.isArray(doacao) ? doacao[0] : doacao;
   },
 
@@ -55,7 +61,7 @@ export const doacaoService = {
     registrarAtividade({
       tipo: 'exclusao',
       entidade: 'colaborador',
-      descricao: `Doação ID ${id} excluída do sistema`,
+      descricao: `Doacao ID ${id} excluida do sistema`,
     });
   },
 };

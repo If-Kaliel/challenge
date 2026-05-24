@@ -127,18 +127,12 @@ export function Beneficiarios() {
   const onSubmit: SubmitHandler<FormData> = async (data) => {
   setCreating(true);
   try {
+    // Envia apenas os campos que o back-end (Java) aceita
     const payload = {
       nome: data.nome || '',
-      cpf: data.cpf || '',
-      nascimento: data.nascimento || '',
+      dtNascimento: data.nascimento || undefined,
       endereco: data.endereco || '',
-      telefone: data.telefone || '',
-      celular: data.celular || '',
-      parentesco: data.parentesco || '',
-      email: data.email || '',
-      colaboradorId: data.colaboradorId || null,
-      observacoes: data.observacoes ?? '',
-      createdAt: new Date().toISOString(),
+      idPrograma: 'P1',
     };
     const created = await beneficiarioService.criar(payload);
     if (created && created.id) {
