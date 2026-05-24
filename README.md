@@ -172,7 +172,6 @@ challenge/
 |---|---|
 | 🌍 **Aplicação (Vercel)** | [https://challenge-woad-ten.vercel.app/] |
 | 📁 **Repositório GitHub** | [https://github.com/If-Kaliel/challenge](https://github.com/If-Kaliel/challenge) |
-| 🎬 **Vídeo de Demonstração (YouTube)** | ⚠️ *Inserir link do vídeo após a gravação* |
 |    **Link do render** | https://back-end-simple-manager.onrender.com Service Id: srv-d864t97dl75s739ete30 |
 |    **Link do vídeo no Youtube** | https://youtu.be/DRzy531b_u8 |
 
